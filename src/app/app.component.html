@@ -1,1 +1,37 @@
-<h3 class="inline"> Welcome to <h5>Alauddin Tuhin</h5></h3>
+<mat-toolbar>
+  Responsive Sidebar Navigation
+</mat-toolbar>
+
+<mat-sidenav-container>
+   <mat-sidenav mode="side" opened>
+
+     <img class="avatar mat-elevation-z8" src="https://source.unsplash.com/c_GmwfHBDzk/200x200">
+     <h5 class="name">Alauddin Tuhin</h5>
+     <p class="designation">Software Engineer | Problem Solver | Tech Enthusiast</p>
+
+    <mat-divider></mat-divider>
+     <button mat-button class="menu-button" routerLink="/home">
+       <mat-icon>home</mat-icon>
+       <span>Home</span>
+     </button>
+     <button mat-button class="menu-button" routerLink="/profile">
+       <mat-icon>person</mat-icon>
+       <span>Profile</span>
+     </button>
+     <button mat-button class="menu-button" routerLink="/about">
+       <mat-icon>info</mat-icon>
+       <span>About</span>
+     </button>
+
+    <mat-divider></mat-divider>
+     <button mat-button class="menu-button" routerLink="/about">
+       <span>@eGeneration</span>
+     </button>
+   </mat-sidenav>
+
+  <mat-sidenav-content>
+    <div class="content mat-elevation-z4">
+      Main Content
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
