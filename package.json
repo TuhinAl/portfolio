@@ -45,5 +45,8 @@
   "engines": {
     "node": "14.18.0",
     "npm": "8.18.0"
+  },
+  "overrides": {
+    "trim-newlines": "^1.0.0"
   }
 }
