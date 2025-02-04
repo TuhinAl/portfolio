@@ -1,0 +1,20 @@
+<div class="student-details">
+  <h2>Student Details</h2>
+  <div *ngIf="student">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>{{ student.name }}</mat-card-title>
+        <mat-card-subtitle>{{ student.email }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p><strong>Age:</strong> {{ student.age }}</p>
+        <p><strong>Enrollment Date:</strong> {{ student.enrollmentDate | date }}</p>
+        <p><strong>Course:</strong> {{ student.course }}</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div *ngIf="!student">
+    <p>No student details available.</p>
+  </div>
+  <button mat-button (click)="goBack()">Back to Dashboard</button>
+</div>
