@@ -1,0 +1,30 @@
+/* styles.css or within a <style> tag */
+
+article {
+    padding: 20px;
+    margin: 10px 0;
+    border-radius: 8px;
+    color: #333;
+  }
+  
+  .about {
+    background-color: #f5f5f5;
+  }
+  
+  .resume {
+    background-color: #e3f2fd;
+  }
+  
+  .portfolio {
+    background-color: #fce4ec;
+  }
+  
+  /* Just an example to make headings stand out */
+  article h2 {
+    margin-bottom: 15px;
+    color: #2c3e50;
+  }
+  
+  article p {
+    line-height: 1.6;
+  }

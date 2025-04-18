@@ -12,6 +12,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegistrationComponent } from './components/registration/registration.component';
+import { ResumeComponent } from './components/resume/resumeComp'; // Ensure this path is correct
 import { StudentDetailsComponent } from './components/student-details/student-details.component';
 import { DataService } from './services/data.service';
 
@@ -23,7 +24,8 @@ import { DataService } from './services/data.service';
     LoginComponent,
     RegistrationComponent,
     DashboardComponent,
-    StudentDetailsComponent
+    StudentDetailsComponent,
+    ResumeComponent
   ],
   imports: [
     // IonicModule.forRoot(),
