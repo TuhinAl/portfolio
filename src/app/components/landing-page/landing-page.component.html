@@ -349,11 +349,22 @@
             <span>2021 — 2023</span>
 
             <p class="timeline-text">
-              Worked as a Software Engineer, contributing to the development of REST API and Implement APIs using Java
-              Spring Boot,
-              collaborating with cross-functional teams to deliver high-quality software solutions.
-              Developed HMS for Border Guard Bangladesh (BGB) and a microservices-based application for the Ministry of
-              Health and Family Welfare (MoHFW) in Bangladesh.
+              Worked as a Software Engineer, contributing to the development of REST API using Java Spring Boot and
+              integration APIs
+              with Angular frontend, collaborating with cross-functional teams to deliver high-quality software
+              solutions.
+            </p>
+            <p class="timeline-text">
+              Developed a comprehensive Hospital Management Information System (HMIS) for Border Guard Bangladesh (BGB),
+              alongside a microservices-based HMIS application for the Bangladesh Ministry of ICT, Ministry of Health
+              and Bangladesh Computer Council (BCC).
+            </p>
+            <p class="timeline-text">
+              This digital healthcare solution is currently in its pilot implementation phase
+              at MAG Osmani Medical College Hospital in Sylhet, with a subsequent rollout planned for all government
+              hospitals across the country. By integrating with the national NID gateway
+              for patient registration and incorporating modules for Prescriptions, OPD, IPD, and Pharmacy, the
+              application has significantly improved healthcare delivery and patient management.
             </p>
 
           </li>
@@ -711,173 +722,22 @@
 
         <ul class="project-list">
 
-          <li class="project-item" [class.active]="isPortfolioCategoryVisible('backend engineering')" data-filter-item
-            data-category="backend engineering">
-            <a href="#">
+          <li class="project-item" *ngFor="let project of projects"
+            [class.active]="isPortfolioCategoryVisible(project.category)" data-filter-item
+            [attr.data-category]="project.category">
+            <a href="#" class="project-item-link" (click)="openProjectModal(project, $event)">
 
               <figure class="project-img">
                 <div class="project-item-icon-box">
                   <ion-icon name="eye-outline"></ion-icon>
                 </div>
 
-                <img src="./assets/images/project-1.jpg" alt="finance" loading="lazy">
+                <img [src]="getProjectImagePath(getProjectPrimaryImage(project))" [alt]="project.title" loading="lazy">
               </figure>
 
-              <h3 class="project-title">Finance</h3>
+              <h3 class="project-title">{{ project.title }}</h3>
 
-              <p class="project-category">Backend Engineering</p>
-
-            </a>
-          </li>
-
-          <li class="project-item" [class.active]="isPortfolioCategoryVisible('backend engineering')" data-filter-item
-            data-category="backend engineering">
-            <a href="#">
-
-              <figure class="project-img">
-                <div class="project-item-icon-box">
-                  <ion-icon name="eye-outline"></ion-icon>
-                </div>
-
-                <img src="./assets/images/project-2.png" alt="orizon" loading="lazy">
-              </figure>
-
-              <h3 class="project-title">Orizon</h3>
-
-              <p class="project-category">Backend Engineering</p>
-
-            </a>
-          </li>
-
-          <li class="project-item" [class.active]="isPortfolioCategoryVisible('system design')" data-filter-item
-            data-category="system design">
-            <a href="#">
-
-              <figure class="project-img">
-                <div class="project-item-icon-box">
-                  <ion-icon name="eye-outline"></ion-icon>
-                </div>
-
-                <img src="./assets/images/project-3.jpg" alt="fundo" loading="lazy">
-              </figure>
-
-              <h3 class="project-title">Fundo</h3>
-
-              <p class="project-category">System Design</p>
-
-            </a>
-          </li>
-
-          <li class="project-item" [class.active]="isPortfolioCategoryVisible('cloud')" data-filter-item
-            data-category="cloud">
-            <a href="#">
-
-              <figure class="project-img">
-                <div class="project-item-icon-box">
-                  <ion-icon name="eye-outline"></ion-icon>
-                </div>
-
-                <img src="./assets/images/project-4.png" alt="brawlhalla" loading="lazy">
-              </figure>
-
-              <h3 class="project-title">Brawlhalla</h3>
-
-              <p class="project-category">Cloud</p>
-
-            </a>
-          </li>
-
-          <li class="project-item" [class.active]="isPortfolioCategoryVisible('system design')" data-filter-item
-            data-category="system design">
-            <a href="#">
-
-              <figure class="project-img">
-                <div class="project-item-icon-box">
-                  <ion-icon name="eye-outline"></ion-icon>
-                </div>
-
-                <img src="./assets/images/project-5.png" alt="dsm." loading="lazy">
-              </figure>
-
-              <h3 class="project-title">DSM.</h3>
-
-              <p class="project-category">System Design</p>
-
-            </a>
-          </li>
-
-          <li class="project-item" [class.active]="isPortfolioCategoryVisible('system design')" data-filter-item
-            data-category="system design">
-            <a href="#">
-
-              <figure class="project-img">
-                <div class="project-item-icon-box">
-                  <ion-icon name="eye-outline"></ion-icon>
-                </div>
-
-                <img src="./assets/images/project-6.png" alt="metaspark" loading="lazy">
-              </figure>
-
-              <h3 class="project-title">MetaSpark</h3>
-
-              <p class="project-category">System Design</p>
-
-            </a>
-          </li>
-
-          <li class="project-item" [class.active]="isPortfolioCategoryVisible('backend engineering')" data-filter-item
-            data-category="backend engineering">
-            <a href="#">
-
-              <figure class="project-img">
-                <div class="project-item-icon-box">
-                  <ion-icon name="eye-outline"></ion-icon>
-                </div>
-
-                <img src="./assets/images/project-7.png" alt="summary" loading="lazy">
-              </figure>
-
-              <h3 class="project-title">Summary</h3>
-
-              <p class="project-category">Backend Engineering</p>
-
-            </a>
-          </li>
-
-          <li class="project-item" [class.active]="isPortfolioCategoryVisible('devops')" data-filter-item
-            data-category="devops">
-            <a href="#">
-
-              <figure class="project-img">
-                <div class="project-item-icon-box">
-                  <ion-icon name="eye-outline"></ion-icon>
-                </div>
-
-                <img src="./assets/images/project-8.jpg" alt="task manager" loading="lazy">
-              </figure>
-
-              <h3 class="project-title">Task Manager</h3>
-
-              <p class="project-category">DevOps</p>
-
-            </a>
-          </li>
-
-          <li class="project-item" [class.active]="isPortfolioCategoryVisible('backend engineering')" data-filter-item
-            data-category="backend engineering">
-            <a href="#">
-
-              <figure class="project-img">
-                <div class="project-item-icon-box">
-                  <ion-icon name="eye-outline"></ion-icon>
-                </div>
-
-                <img src="./assets/images/project-9.png" alt="arrival" loading="lazy">
-              </figure>
-
-              <h3 class="project-title">Arrival</h3>
-
-              <p class="project-category">Backend Engineering</p>
+              <p class="project-category">{{ project.category | titlecase }}</p>
 
             </a>
           </li>
@@ -885,6 +745,67 @@
         </ul>
 
       </section>
+
+      <div class="project-modal-overlay" *ngIf="selectedProject as project" (click)="closeProjectModal()">
+        <div class="project-modal" role="dialog" aria-modal="true" [attr.aria-label]="project.title + ' details'"
+          (click)="$event.stopPropagation()">
+          <button class="project-modal-close" type="button" aria-label="Close project modal"
+            (click)="closeProjectModal()">
+            <ion-icon name="close-outline"></ion-icon>
+          </button>
+
+          <figure class="project-modal-image-box">
+            <img [src]="getProjectImagePath(getProjectPrimaryImage(project))" [alt]="project.title">
+          </figure>
+
+          <div class="project-modal-gallery" *ngIf="project.images.length > 1">
+            <img class="project-modal-gallery-img" *ngFor="let image of project.images"
+              [src]="getProjectImagePath(image)" [alt]="project.title + ' preview'" loading="lazy">
+          </div>
+
+          <div class="project-modal-content">
+            <h3 class="h3 project-modal-title">{{ project.title }}</h3>
+            <p class="project-modal-role">{{ project.role }} | {{ project.category | titlecase }}</p>
+            <p class="project-modal-description">{{ project.description }}</p>
+
+            <div class="project-modal-section">
+              <h4 class="h4 project-modal-section-title">Modules I Worked On</h4>
+              <ul class="project-modal-chip-list">
+                <li class="project-modal-chip" *ngFor="let module of project.modulesWorked">{{ module }}</li>
+              </ul>
+            </div>
+
+            <div class="project-modal-section">
+              <h4 class="h4 project-modal-section-title">Tech Stack</h4>
+              <div class="project-modal-tech-grid">
+                <div class="project-modal-tech-card" *ngIf="project.techStack.backend.length > 0">
+                  <p class="project-modal-tech-title">Backend</p>
+                  <p class="project-modal-tech-value">{{ project.techStack.backend.join(', ') }}</p>
+                </div>
+                <div class="project-modal-tech-card" *ngIf="project.techStack.frontend.length > 0">
+                  <p class="project-modal-tech-title">Frontend</p>
+                  <p class="project-modal-tech-value">{{ project.techStack.frontend.join(', ') }}</p>
+                </div>
+                <div class="project-modal-tech-card" *ngIf="project.techStack.database.length > 0">
+                  <p class="project-modal-tech-title">Database</p>
+                  <p class="project-modal-tech-value">{{ project.techStack.database.join(', ') }}</p>
+                </div>
+                <div class="project-modal-tech-card" *ngIf="project.techStack.infra.length > 0">
+                  <p class="project-modal-tech-title">Infra</p>
+                  <p class="project-modal-tech-value">{{ project.techStack.infra.join(', ') }}</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-modal-section">
+              <h4 class="h4 project-modal-section-title">Tools and Technologies Used</h4>
+              <ul class="project-modal-chip-list">
+                <li class="project-modal-chip" *ngFor="let tool of project.toolsUsed">{{ tool }}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
 
     </article>
 
