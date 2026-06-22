@@ -8,12 +8,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IonicModule } from '@ionic/angular';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
+
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
-import { LoginComponent } from './components/login/login.component';
-import { RegistrationComponent } from './components/registration/registration.component';
+
 import { ResumeComponent } from './components/resume/resumeComp'; // Ensure this path is correct
-import { StudentDetailsComponent } from './components/student-details/student-details.component';
+
 import { DataService } from './services/data.service';
 
 
@@ -21,10 +20,6 @@ import { DataService } from './services/data.service';
   declarations: [
     AppComponent,
     LandingPageComponent,
-    LoginComponent,
-    RegistrationComponent,
-    DashboardComponent,
-    StudentDetailsComponent,
     ResumeComponent
   ],
   imports: [

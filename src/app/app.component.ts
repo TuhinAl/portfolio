@@ -6,9 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Coaching Center Management System';
-  userName = 'Admin';
-  logout() {
-    this.userName = 'Super Admin';
-  }
+  title = 'portfolio';
 }

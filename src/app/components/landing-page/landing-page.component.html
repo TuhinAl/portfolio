@@ -44,7 +44,7 @@
           <div class="contact-info">
             <p class="contact-title">Email</p>
 
-            <a href="alauddintuhin1411@gmail.com" class="contact-link">alauddintuhin1411@gmail.com</a>
+            <a href="mailto:alauddintuhin1411@gmail.com" class="contact-link">alauddintuhin1411@gmail.com</a>
           </div>
 
         </li>
@@ -58,12 +58,12 @@
           <div class="contact-info">
             <p class="contact-title">Phone</p>
 
-            <a href="tel:+12133522795" class="contact-link">+8801726967760</a>
+            <a href="tel:+8801726967760" class="contact-link">+8801726967760</a>
           </div>
 
         </li>
 
-        <li class="contact-item">
+        <!-- <li class="contact-item">
 
           <div class="icon-box">
             <ion-icon name="calendar-outline"></ion-icon>
@@ -75,7 +75,7 @@
             <time datetime="1998-06-23">June 23, 1998</time>
           </div>
 
-        </li>
+        </li> -->
 
         <li class="contact-item">
 
@@ -98,20 +98,23 @@
       <ul class="social-list">
 
         <li class="social-item">
-          <a href="#" class="social-link">
-            <ion-icon name="logo-facebook"></ion-icon>
+          <a href="https://www.linkedin.com/in/altu/" class="social-link" target="_blank" rel="noopener noreferrer"
+            aria-label="LinkedIn">
+            <ion-icon name="logo-linkedin"></ion-icon>
           </a>
         </li>
 
         <li class="social-item">
-          <a href="#" class="social-link">
-            <ion-icon name="logo-twitter"></ion-icon>
+          <a href="https://github.com/tuhinal" class="social-link" target="_blank" rel="noopener noreferrer"
+            aria-label="GitHub">
+            <ion-icon name="logo-github"></ion-icon>
           </a>
         </li>
 
         <li class="social-item">
-          <a href="#" class="social-link">
-            <ion-icon name="logo-instagram"></ion-icon>
+          <a href="https://leetcode.com/u/tuhinAl/" class="social-link" target="_blank" rel="noopener noreferrer"
+            aria-label="LeetCode">
+            <img src="./assets/images/leetcode.png" alt="LeetCode" class="sidebar-leetcode-icon">
           </a>
         </li>
 
@@ -140,23 +143,28 @@
       <ul class="navbar-list">
 
         <li class="navbar-item">
-          <button class="navbar-link  active" data-nav-link>About</button>
+          <button class="navbar-link" [class.active]="activePage === 'home'" data-nav-link
+            (click)="showPage('home')">Home</button>
         </li>
 
         <li class="navbar-item">
-          <button class="navbar-link" data-nav-link="resume" onclick="showPage('resume')">Resume</button>
+          <button class="navbar-link" [class.active]="activePage === 'about'" data-nav-link
+            (click)="showPage('about')">About</button>
         </li>
 
         <li class="navbar-item">
-          <button class="navbar-link" data-nav-link>Portfolio</button>
+          <button class="navbar-link" [class.active]="activePage === 'portfolio'" data-nav-link
+            (click)="showPage('portfolio')">Projects</button>
         </li>
 
         <li class="navbar-item">
-          <button class="navbar-link" data-nav-link>Blog</button>
+          <button class="navbar-link" [class.active]="activePage === 'blog'" data-nav-link
+            (click)="showPage('blog')">Blog</button>
         </li>
 
         <li class="navbar-item">
-          <button class="navbar-link" data-nav-link>Contact</button>
+          <button class="navbar-link" [class.active]="activePage === 'contact'" data-nav-link
+            (click)="showPage('contact')">Contact</button>
         </li>
 
       </ul>
@@ -168,37 +176,27 @@
 
 
     <!--
-      - #ABOUT
+      - #Home
     -->
 
-    <article class="about  active" data-page="about">
+    <article class="about" [class.active]="activePage === 'home'" data-page="home">
 
       <header>
-        <h2 class="h2 article-title">About me</h2>
+        <h2 class="h2 article-title">Home</h2>
       </header>
 
       <section class="about-text">
-        <p>
-          Hello, I'm Alauddin Tuhin, an aspiring DevOps Engineer with a strong foundation in Linux systems, cloud
-          computing, and software engineering. Over the past year, I have passionately pursued expertise in Linux
-          Ubuntu, system architecture, and DevOps tools while honing my programming skills in Golang, Java, and Spring
-          Boot.
+
+        <p>Hello! I'm Tuhin Md Alauddin, a dedicated Software Engineer with a passion for complete, end-to-end product
+          development. My career spans diverse technical landscapes, including FinTech and HealthTech, where I have
+          collaborated within large engineering teams to architect microservices and develop backend REST APIs in Java,
+          seamlessly integrating them with Angular frontends.
         </p>
         <p>
-          I have hands-on experience with containerization technologies like Docker, microservices architecture, and API
-          development, demonstrating my ability to deliver efficient and scalable solutions. My dedication to learning
-          is reflected in my continuous exploration of advanced topics, such as reflection in Golang, EBS volume
-          optimization, and real-time data streaming with Kafka.
-        </p>
-        <p>
-          As I transition into the DevOps field, I am motivated to bridge the gap between development and operations,
-          streamlining workflows, enhancing system reliability, and driving innovation. I am currently preparing for
-          professional certifications, including AWS Solutions Architect and Linux Foundation tracks, to further
-          solidify my technical proficiency.
-        </p>
-        <p>Beyond technology, I am a lifelong learner who thrives on solving complex problems and collaborating with
-          diverse teams to create impactful solutions. I look forward to contributing to challenging projects that push
-          the boundaries of technology and infrastructure.
+          Complementing my core development skills, I also possess strong expertise in system design, cloud
+          infrastructure, and DevOps. This comprehensive skill set empowers me to take full ownership of the entire
+          application lifecycle—from initial architecture and building, all the way to maintaining and successfully
+          shipping robust products to production.
         </p>
       </section>
 
@@ -221,11 +219,18 @@
             </div>
 
             <div class="service-content-box">
-              <h4 class="h4 service-item-title">Web design</h4>
+              <h4 class="h4 service-item-title">Application Development (Java + Angular)</h4>
 
               <p class="service-item-text">
-                The most modern and high-quality design made at a professional level.
+                Build scalable, production-ready web applications with clean APIs and maintainable frontend delivery.
               </p>
+
+              <ul class="service-tech-list" aria-label="Application development tools">
+                <li class="service-tech-tag">Java</li>
+                <li class="service-tech-tag">Spring Boot</li>
+                <li class="service-tech-tag">Angular</li>
+                <li class="service-tech-tag">REST API</li>
+              </ul>
             </div>
 
           </li>
@@ -237,11 +242,20 @@
             </div>
 
             <div class="service-content-box">
-              <h4 class="h4 service-item-title">Web development</h4>
+              <h4 class="h4 service-item-title">Application Architecture</h4>
 
               <p class="service-item-text">
-                High-quality development of sites at the professional level.
+                Design reliable architecture patterns for complex systems and domain-driven product evolution.
               </p>
+
+              <ul class="service-tech-list" aria-label="Architecture practices">
+                <li class="service-tech-tag">Microservices</li>
+                <li class="service-tech-tag">Monolithic</li>
+                <li class="service-tech-tag">Hexagonal</li>
+                <li class="service-tech-tag">DDD</li>
+                <li class="service-tech-tag">CORS</li>
+                <li class="service-tech-tag">Kafka</li>
+              </ul>
             </div>
 
           </li>
@@ -253,11 +267,21 @@
             </div>
 
             <div class="service-content-box">
-              <h4 class="h4 service-item-title">Mobile apps</h4>
+              <h4 class="h4 service-item-title">Infrastructure Management & DevOps</h4>
 
               <p class="service-item-text">
-                Professional development of applications for iOS and Android.
+                Automate delivery pipelines, container operations, and observability for stable production releases.
               </p>
+
+              <ul class="service-tech-list" aria-label="DevOps tools">
+                <li class="service-tech-tag">Jenkins</li>
+                <li class="service-tech-tag">Docker</li>
+                <li class="service-tech-tag">Kubernetes</li>
+                <li class="service-tech-tag">Prometheus</li>
+                <li class="service-tech-tag">Grafana</li>
+                <li class="service-tech-tag">Linux</li>
+                <li class="service-tech-tag">Nginx</li>
+              </ul>
             </div>
 
           </li>
@@ -269,212 +293,23 @@
             </div>
 
             <div class="service-content-box">
-              <h4 class="h4 service-item-title">Photography</h4>
+              <h4 class="h4 service-item-title">Cloud Engineering (AWS)</h4>
 
               <p class="service-item-text">
-                I make high-quality photos of any category at a professional level.
+                Implement cloud-native solutions with secure networking, infrastructure as code, and cost-aware scaling.
               </p>
+
+              <ul class="service-tech-list" aria-label="AWS cloud tools">
+                <li class="service-tech-tag">EC2</li>
+                <li class="service-tech-tag">IAM</li>
+                <li class="service-tech-tag">VPC</li>
+                <li class="service-tech-tag">DynamoDB</li>
+                <li class="service-tech-tag">Lambda</li>
+                <li class="service-tech-tag">CloudFormation</li>
+                <li class="service-tech-tag">CDK</li>
+              </ul>
             </div>
 
-          </li>
-
-        </ul>
-
-      </section>
-
-
-      <!--
-        - testimonials
-      -->
-
-      <section class="testimonials">
-
-        <h3 class="h3 testimonials-title">Testimonials</h3>
-
-        <ul class="testimonials-list has-scrollbar">
-
-          <li class="testimonials-item">
-            <div class="content-card" data-testimonials-item>
-
-              <figure class="testimonials-avatar-box">
-                <img src="./assets/images/avatar-1.png" alt="Daniel lewis" width="60" data-testimonials-avatar>
-              </figure>
-
-              <h4 class="h4 testimonials-item-title" data-testimonials-title>Daniel lewis</h4>
-
-              <div class="testimonials-text" data-testimonials-text>
-                <p>
-                  Richard was hired to create a corporate identity. We were very pleased with the work done. She has a
-                  lot of experience
-                  and is very concerned about the needs of client. Lorem ipsum dolor sit amet, ullamcous cididt
-                  consectetur adipiscing
-                  elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.
-                </p>
-              </div>
-
-            </div>
-          </li>
-
-          <li class="testimonials-item">
-            <div class="content-card" data-testimonials-item>
-
-              <figure class="testimonials-avatar-box">
-                <img src="./assets/images/avatar-2.png" alt="Jessica miller" width="60" data-testimonials-avatar>
-              </figure>
-
-              <h4 class="h4 testimonials-item-title" data-testimonials-title>Jessica miller</h4>
-
-              <div class="testimonials-text" data-testimonials-text>
-                <p>
-                  Richard was hired to create a corporate identity. We were very pleased with the work done. She has a
-                  lot of experience
-                  and is very concerned about the needs of client. Lorem ipsum dolor sit amet, ullamcous cididt
-                  consectetur adipiscing
-                  elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.
-                </p>
-              </div>
-
-            </div>
-          </li>
-
-          <li class="testimonials-item">
-            <div class="content-card" data-testimonials-item>
-
-              <figure class="testimonials-avatar-box">
-                <img src="./assets/images/avatar-3.png" alt="Emily evans" width="60" data-testimonials-avatar>
-              </figure>
-
-              <h4 class="h4 testimonials-item-title" data-testimonials-title>Emily evans</h4>
-
-              <div class="testimonials-text" data-testimonials-text>
-                <p>
-                  Richard was hired to create a corporate identity. We were very pleased with the work done. She has a
-                  lot of experience
-                  and is very concerned about the needs of client. Lorem ipsum dolor sit amet, ullamcous cididt
-                  consectetur adipiscing
-                  elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.
-                </p>
-              </div>
-
-            </div>
-          </li>
-
-          <li class="testimonials-item">
-            <div class="content-card" data-testimonials-item>
-
-              <figure class="testimonials-avatar-box">
-                <img src="./assets/images/avatar-4.png" alt="Henry william" width="60" data-testimonials-avatar>
-              </figure>
-
-              <h4 class="h4 testimonials-item-title" data-testimonials-title>Henry william</h4>
-
-              <div class="testimonials-text" data-testimonials-text>
-                <p>
-                  Richard was hired to create a corporate identity. We were very pleased with the work done. She has a
-                  lot of experience
-                  and is very concerned about the needs of client. Lorem ipsum dolor sit amet, ullamcous cididt
-                  consectetur adipiscing
-                  elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.
-                </p>
-              </div>
-
-            </div>
-          </li>
-
-        </ul>
-
-      </section>
-
-
-      <!--
-        - testimonials modal
-      -->
-
-      <div class="modal-container" data-modal-container>
-
-        <div class="overlay" data-overlay></div>
-
-        <section class="testimonials-modal">
-
-          <button class="modal-close-btn" data-modal-close-btn>
-            <ion-icon name="close-outline"></ion-icon>
-          </button>
-
-          <div class="modal-img-wrapper">
-            <figure class="modal-avatar-box">
-              <img src="./assets/images/avatar-1.png" alt="Daniel lewis" width="80" data-modal-img>
-            </figure>
-
-            <img src="./assets/images/icon-quote.svg" alt="quote icon">
-          </div>
-
-          <div class="modal-content">
-
-            <h4 class="h3 modal-title" data-modal-title>Daniel lewis</h4>
-
-            <time datetime="2021-06-14">14 June, 2021</time>
-
-            <div data-modal-text>
-              <p>
-                Richard was hired to create a corporate identity. We were very pleased with the work done. She has a
-                lot of experience
-                and is very concerned about the needs of client. Lorem ipsum dolor sit amet, ullamcous cididt
-                consectetur adipiscing
-                elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.
-              </p>
-            </div>
-
-          </div>
-
-        </section>
-
-      </div>
-
-
-      <!--
-        - clients
-      -->
-
-      <section class="clients">
-
-        <h3 class="h3 clients-title">Clients</h3>
-
-        <ul class="clients-list has-scrollbar">
-
-          <li class="clients-item">
-            <a href="#">
-              <img src="./assets/images/logo-1-color.png" alt="client logo">
-            </a>
-          </li>
-
-          <li class="clients-item">
-            <a href="#">
-              <img src="./assets/images/logo-2-color.png" alt="client logo">
-            </a>
-          </li>
-
-          <li class="clients-item">
-            <a href="#">
-              <img src="./assets/images/logo-3-color.png" alt="client logo">
-            </a>
-          </li>
-
-          <li class="clients-item">
-            <a href="#">
-              <img src="./assets/images/logo-4-color.png" alt="client logo">
-            </a>
-          </li>
-
-          <li class="clients-item">
-            <a href="#">
-              <img src="./assets/images/logo-5-color.png" alt="client logo">
-            </a>
-          </li>
-
-          <li class="clients-item">
-            <a href="#">
-              <img src="./assets/images/logo-6-color.png" alt="client logo">
-            </a>
           </li>
 
         </ul>
@@ -491,10 +326,10 @@
       - #RESUME
     -->
 
-    <article class="resume" data-page="resume">
+    <article class="resume" [class.active]="activePage === 'about'" data-page="about">
 
       <header>
-        <h2 class="h2 article-title">Resume</h2>
+        <h2 class="h2 article-title">About</h2>
       </header>
 
       <section class="timeline">
@@ -511,41 +346,36 @@
 
           <li class="timeline-item">
 
-            <h4 class="h4 timeline-item-title">University school of the arts</h4>
+            <h4 class="h4 timeline-item-title">Eastern University Bangladesh</h4>
 
-            <span>2007 — 2008</span>
+            <span>2015 — 2019</span>
 
             <p class="timeline-text">
-              Nemo enims ipsam voluptatem, blanditiis praesentium voluptum delenit atque corrupti, quos dolores et
-              quas molestias
-              exceptur.
+              Bachelor of Science in Computer Science and Engineering (CSE).
             </p>
 
           </li>
 
           <li class="timeline-item">
 
-            <h4 class="h4 timeline-item-title">New york academy of art</h4>
+            <h4 class="h4 timeline-item-title">Palashi Adarsha College, Jashore, Khulna.</h4>
 
-            <span>2006 — 2007</span>
+            <span>2012 — 2014</span>
 
             <p class="timeline-text">
-              Ratione voluptatem sequi nesciunt, facere quisquams facere menda ossimus, omnis voluptas assumenda est
-              omnis..
+              Higher Secondary Certificate (HSC) with a focus on science disciplines.
             </p>
 
           </li>
 
           <li class="timeline-item">
 
-            <h4 class="h4 timeline-item-title">High school of art and design</h4>
+            <h4 class="h4 timeline-item-title">Khedapara High School, Jashore, Khulna.</h4>
 
-            <span>2002 — 2004</span>
+            <span>2007 — 2012</span>
 
             <p class="timeline-text">
-              Duis aute irure dolor in reprehenderit in voluptate, quila voluptas mag odit aut fugit, sed consequuntur
-              magni dolores
-              eos.
+              Secondary School Certificate (SSC) with a focus on science disciplines.
             </p>
 
           </li>
@@ -568,42 +398,43 @@
 
           <li class="timeline-item">
 
-            <h4 class="h4 timeline-item-title">Creative director</h4>
+            <h4 class="h4 timeline-item-title">BJIT Limited</h4>
 
-            <span>2015 — Present</span>
+            <span>2024 — Present</span>
 
             <p class="timeline-text">
-              Nemo enim ipsam voluptatem blanditiis praesentium voluptum delenit atque corrupti, quos dolores et qvuas
-              molestias
-              exceptur.
+              Currently working as a Backend Software Engineer, responsible for designing and developing scalable
+              applications, implementing microservices architecture to ensure
+              reliable and efficient software delivery.
             </p>
 
           </li>
 
           <li class="timeline-item">
 
-            <h4 class="h4 timeline-item-title">Art director</h4>
+            <h4 class="h4 timeline-item-title preserve-case">eGeneration PLC</h4>
 
-            <span>2013 — 2015</span>
+            <span>2021 — 2023</span>
 
             <p class="timeline-text">
-              Nemo enims ipsam voluptatem, blanditiis praesentium voluptum delenit atque corrupti, quos dolores et
-              quas molestias
-              exceptur.
+              Worked as a Software Engineer, contributing to the development of REST API and Implement APIs using Java
+              Spring Boot,
+              collaborating with cross-functional teams to deliver high-quality software solutions.
+              Developed HMS for Border Guard Bangladesh (BGB) and a microservices-based application for the Ministry of
+              Health and Family Welfare (MoHFW) in Bangladesh.
             </p>
 
           </li>
 
           <li class="timeline-item">
 
-            <h4 class="h4 timeline-item-title">Web designer</h4>
+            <h4 class="h4 timeline-item-title">BDJobs Limited</h4>
 
-            <span>2010 — 2013</span>
+            <span>2020 — 2021</span>
 
             <p class="timeline-text">
-              Nemo enims ipsam voluptatem, blanditiis praesentium voluptum delenit atque corrupti, quos dolores et
-              quas molestias
-              exceptur.
+              Worked as a Software Engineer, contributing to the development of various web applications and services.
+              Collaborated with cross-functional teams to deliver high-quality software solutions.
             </p>
 
           </li>
@@ -614,63 +445,102 @@
 
       <section class="skill">
 
-        <h3 class="h3 skills-title">My skills</h3>
+        <h3 class="h3 skills-title">Technical Skills</h3>
 
-        <ul class="skills-list content-card">
+        <div class="skills-board content-card">
 
-          <li class="skills-item">
+          <div class="skills-category">
+            <h5 class="h5 skills-category-title">Backend Technologies</h5>
+            <ul class="skills-chip-list">
+              <li class="skills-chip">Java</li>
+              <li class="skills-chip">Spring Boot</li>
+              <li class="skills-chip">Golang</li>
+              <li class="skills-chip">REST API</li>
+              <li class="skills-chip">Microservices</li>
+              <li class="skills-chip">Kafka</li>
+            </ul>
+          </div>
 
-            <div class="title-wrapper">
-              <h5 class="h5">Web design</h5>
-              <data value="80">80%</data>
-            </div>
+          <div class="skills-category">
+            <h5 class="h5 skills-category-title">Frontend Technologies</h5>
+            <ul class="skills-chip-list">
+              <li class="skills-chip">TypeScript</li>
+              <li class="skills-chip">Angular (14+)</li>
+              <li class="skills-chip">RxJS</li>
+            </ul>
+          </div>
 
-            <div class="skill-progress-bg">
-              <div class="skill-progress-fill" style="width: 80%;"></div>
-            </div>
+          <div class="skills-category">
+            <h5 class="h5 skills-category-title">Database and ORM</h5>
+            <ul class="skills-chip-list">
+              <li class="skills-chip">PostgreSQL</li>
+              <li class="skills-chip">MySQL</li>
+              <li class="skills-chip">SQL</li>
+              <li class="skills-chip">Hibernate</li>
+              <li class="skills-chip">Spring Data JPA</li>
+              <li class="skills-chip">QueryDSL</li>
+            </ul>
+          </div>
 
-          </li>
+          <div class="skills-category">
+            <h5 class="h5 skills-category-title">DevOps and Cloud</h5>
+            <ul class="skills-chip-list">
+              <li class="skills-chip">AWS IAM</li>
+              <li class="skills-chip">AWS S3</li>
+              <li class="skills-chip">AWS EC2</li>
+              <li class="skills-chip">AWS VPC</li>
+              <li class="skills-chip">AWS ELB</li>
+              <li class="skills-chip">AWS RDS</li>
+              <li class="skills-chip">AWS Route 53</li>
+              <li class="skills-chip">Docker</li>
+              <li class="skills-chip">Kubernetes</li>
+              <li class="skills-chip">CI/CD (Jenkins)</li>
+            </ul>
+          </div>
 
-          <li class="skills-item">
+          <div class="skills-category">
+            <h5 class="h5 skills-category-title">Design Patterns and Principles</h5>
+            <ul class="skills-chip-list">
+              <li class="skills-chip">Singleton</li>
+              <li class="skills-chip">Strategy</li>
+              <li class="skills-chip">Observer</li>
+              <li class="skills-chip">Adapter</li>
+              <li class="skills-chip">Factory</li>
+              <li class="skills-chip">Builder</li>
+              <li class="skills-chip">Decorator</li>
+              <li class="skills-chip">SOLID</li>
+            </ul>
+          </div>
 
-            <div class="title-wrapper">
-              <h5 class="h5">Graphic design</h5>
-              <data value="70">70%</data>
-            </div>
+          <div class="skills-category">
+            <h5 class="h5 skills-category-title">Collaboration</h5>
+            <ul class="skills-chip-list">
+              <li class="skills-chip">GitLab</li>
+              <li class="skills-chip">GitHub</li>
+              <li class="skills-chip">JIRA</li>
+            </ul>
+          </div>
 
-            <div class="skill-progress-bg">
-              <div class="skill-progress-fill" style="width: 70%;"></div>
-            </div>
+          <div class="skills-category">
+            <h5 class="h5 skills-category-title">Soft Skills</h5>
+            <ul class="skills-chip-list">
+              <li class="skills-chip">R&amp;D</li>
+              <li class="skills-chip">Ownership</li>
+              <li class="skills-chip">Communication</li>
+            </ul>
+          </div>
 
-          </li>
+          <div class="skills-category">
+            <h5 class="h5 skills-category-title">AI and Prompt Engineering</h5>
+            <ul class="skills-chip-list">
+              <li class="skills-chip">AI-driven Development</li>
+              <li class="skills-chip">Prompt Engineering</li>
+              <li class="skills-chip">Parent and Child Prompting</li>
+            </ul>
+            <p class="skills-note">Actively learning daily from KodeKloud.</p>
+          </div>
 
-          <li class="skills-item">
-
-            <div class="title-wrapper">
-              <h5 class="h5">Branding</h5>
-              <data value="90">90%</data>
-            </div>
-
-            <div class="skill-progress-bg">
-              <div class="skill-progress-fill" style="width: 90%;"></div>
-            </div>
-
-          </li>
-
-          <li class="skills-item">
-
-            <div class="title-wrapper">
-              <h5 class="h5">WordPress</h5>
-              <data value="50">50%</data>
-            </div>
-
-            <div class="skill-progress-bg">
-              <div class="skill-progress-fill" style="width: 50%;"></div>
-            </div>
-
-          </li>
-
-        </ul>
+        </div>
 
       </section>
 
@@ -684,10 +554,10 @@
       - #PORTFOLIO
     -->
 
-    <article class="portfolio" data-page="portfolio">
+    <article class="portfolio" [class.active]="activePage === 'portfolio'" data-page="portfolio">
 
       <header>
-        <h2 class="h2 article-title">Portfolio</h2>
+        <h2 class="h2 article-title">Projects</h2>
       </header>
 
       <section class="projects">
@@ -695,19 +565,28 @@
         <ul class="filter-list">
 
           <li class="filter-item">
-            <button class="active" data-filter-btn>All</button>
+            <button [class.active]="activePortfolioFilter === 'all'" data-filter-btn
+              (click)="setPortfolioFilter('all')">All</button>
           </li>
 
           <li class="filter-item">
-            <button data-filter-btn>Web design</button>
+            <button [class.active]="activePortfolioFilter === 'system design'" data-filter-btn
+              (click)="setPortfolioFilter('system design')">System Design</button>
           </li>
 
           <li class="filter-item">
-            <button data-filter-btn>Applications</button>
+            <button [class.active]="activePortfolioFilter === 'cloud'" data-filter-btn
+              (click)="setPortfolioFilter('cloud')">Cloud</button>
           </li>
 
           <li class="filter-item">
-            <button data-filter-btn>Web development</button>
+            <button [class.active]="activePortfolioFilter === 'devops'" data-filter-btn
+              (click)="setPortfolioFilter('devops')">DevOps</button>
+          </li>
+
+          <li class="filter-item">
+            <button [class.active]="activePortfolioFilter === 'backend engineering'" data-filter-btn
+              (click)="setPortfolioFilter('backend engineering')">Backend Engineering</button>
           </li>
 
         </ul>
@@ -731,15 +610,19 @@
             </li>
 
             <li class="select-item">
-              <button data-select-item>Web design</button>
+              <button data-select-item>System Design</button>
             </li>
 
             <li class="select-item">
-              <button data-select-item>Applications</button>
+              <button data-select-item>Cloud</button>
             </li>
 
             <li class="select-item">
-              <button data-select-item>Web development</button>
+              <button data-select-item>DevOps</button>
+            </li>
+
+            <li class="select-item">
+              <button data-select-item>Backend Engineering</button>
             </li>
 
           </ul>
@@ -748,7 +631,8 @@
 
         <ul class="project-list">
 
-          <li class="project-item  active" data-filter-item data-category="web development">
+          <li class="project-item" [class.active]="isPortfolioCategoryVisible('backend engineering')" data-filter-item
+            data-category="backend engineering">
             <a href="#">
 
               <figure class="project-img">
@@ -761,12 +645,13 @@
 
               <h3 class="project-title">Finance</h3>
 
-              <p class="project-category">Web development</p>
+              <p class="project-category">Backend Engineering</p>
 
             </a>
           </li>
 
-          <li class="project-item  active" data-filter-item data-category="web development">
+          <li class="project-item" [class.active]="isPortfolioCategoryVisible('backend engineering')" data-filter-item
+            data-category="backend engineering">
             <a href="#">
 
               <figure class="project-img">
@@ -779,12 +664,13 @@
 
               <h3 class="project-title">Orizon</h3>
 
-              <p class="project-category">Web development</p>
+              <p class="project-category">Backend Engineering</p>
 
             </a>
           </li>
 
-          <li class="project-item  active" data-filter-item data-category="web design">
+          <li class="project-item" [class.active]="isPortfolioCategoryVisible('system design')" data-filter-item
+            data-category="system design">
             <a href="#">
 
               <figure class="project-img">
@@ -797,12 +683,13 @@
 
               <h3 class="project-title">Fundo</h3>
 
-              <p class="project-category">Web design</p>
+              <p class="project-category">System Design</p>
 
             </a>
           </li>
 
-          <li class="project-item  active" data-filter-item data-category="applications">
+          <li class="project-item" [class.active]="isPortfolioCategoryVisible('cloud')" data-filter-item
+            data-category="cloud">
             <a href="#">
 
               <figure class="project-img">
@@ -815,12 +702,13 @@
 
               <h3 class="project-title">Brawlhalla</h3>
 
-              <p class="project-category">Applications</p>
+              <p class="project-category">Cloud</p>
 
             </a>
           </li>
 
-          <li class="project-item  active" data-filter-item data-category="web design">
+          <li class="project-item" [class.active]="isPortfolioCategoryVisible('system design')" data-filter-item
+            data-category="system design">
             <a href="#">
 
               <figure class="project-img">
@@ -833,12 +721,13 @@
 
               <h3 class="project-title">DSM.</h3>
 
-              <p class="project-category">Web design</p>
+              <p class="project-category">System Design</p>
 
             </a>
           </li>
 
-          <li class="project-item  active" data-filter-item data-category="web design">
+          <li class="project-item" [class.active]="isPortfolioCategoryVisible('system design')" data-filter-item
+            data-category="system design">
             <a href="#">
 
               <figure class="project-img">
@@ -851,12 +740,13 @@
 
               <h3 class="project-title">MetaSpark</h3>
 
-              <p class="project-category">Web design</p>
+              <p class="project-category">System Design</p>
 
             </a>
           </li>
 
-          <li class="project-item  active" data-filter-item data-category="web development">
+          <li class="project-item" [class.active]="isPortfolioCategoryVisible('backend engineering')" data-filter-item
+            data-category="backend engineering">
             <a href="#">
 
               <figure class="project-img">
@@ -869,12 +759,13 @@
 
               <h3 class="project-title">Summary</h3>
 
-              <p class="project-category">Web development</p>
+              <p class="project-category">Backend Engineering</p>
 
             </a>
           </li>
 
-          <li class="project-item  active" data-filter-item data-category="applications">
+          <li class="project-item" [class.active]="isPortfolioCategoryVisible('devops')" data-filter-item
+            data-category="devops">
             <a href="#">
 
               <figure class="project-img">
@@ -887,12 +778,13 @@
 
               <h3 class="project-title">Task Manager</h3>
 
-              <p class="project-category">Applications</p>
+              <p class="project-category">DevOps</p>
 
             </a>
           </li>
 
-          <li class="project-item  active" data-filter-item data-category="web development">
+          <li class="project-item" [class.active]="isPortfolioCategoryVisible('backend engineering')" data-filter-item
+            data-category="backend engineering">
             <a href="#">
 
               <figure class="project-img">
@@ -905,7 +797,7 @@
 
               <h3 class="project-title">Arrival</h3>
 
-              <p class="project-category">Web development</p>
+              <p class="project-category">Backend Engineering</p>
 
             </a>
           </li>
@@ -924,7 +816,7 @@
       - #BLOG
     -->
 
-    <article class="blog" data-page="blog">
+    <article class="blog" [class.active]="activePage === 'blog'" data-page="blog">
 
       <header>
         <h2 class="h2 article-title">Blog</h2>
@@ -932,9 +824,43 @@
 
       <section class="blog-posts">
 
+        <ul class="filter-list blog-filter-list">
+
+          <li class="filter-item">
+            <button [class.active]="activeBlogFilter === 'all'" data-filter-btn
+              (click)="setBlogFilter('all')">All</button>
+          </li>
+
+          <li class="filter-item">
+            <button [class.active]="activeBlogFilter === 'system design'" data-filter-btn
+              (click)="setBlogFilter('system design')">System Design</button>
+          </li>
+
+          <li class="filter-item">
+            <button [class.active]="activeBlogFilter === 'backend'" data-filter-btn
+              (click)="setBlogFilter('backend')">Backend</button>
+          </li>
+
+          <li class="filter-item">
+            <button [class.active]="activeBlogFilter === 'database'" data-filter-btn
+              (click)="setBlogFilter('database')">Database</button>
+          </li>
+
+          <li class="filter-item">
+            <button [class.active]="activeBlogFilter === 'cloud'" data-filter-btn
+              (click)="setBlogFilter('cloud')">Cloud</button>
+          </li>
+
+          <li class="filter-item">
+            <button [class.active]="activeBlogFilter === 'devops'" data-filter-btn
+              (click)="setBlogFilter('devops')">DevOps</button>
+          </li>
+
+        </ul>
+
         <ul class="blog-posts-list">
 
-          <li class="blog-post-item">
+          <li class="blog-post-item" *ngIf="isBlogCategoryVisible('system design')">
             <a href="#">
 
               <figure class="blog-banner-box">
@@ -944,12 +870,14 @@
               <div class="blog-content">
 
                 <div class="blog-meta">
-                  <p class="blog-category">Design</p>
+                  <p class="blog-category">System Design</p>
 
                   <span class="dot"></span>
 
                   <time datetime="2022-02-23">Fab 23, 2022</time>
                 </div>
+
+                <p class="blog-tag-pill">Kubernetes</p>
 
                 <h3 class="h3 blog-item-title">Design conferences in 2022</h3>
 
@@ -962,7 +890,7 @@
             </a>
           </li>
 
-          <li class="blog-post-item">
+          <li class="blog-post-item" *ngIf="isBlogCategoryVisible('backend')">
             <a href="#">
 
               <figure class="blog-banner-box">
@@ -972,12 +900,14 @@
               <div class="blog-content">
 
                 <div class="blog-meta">
-                  <p class="blog-category">Design</p>
+                  <p class="blog-category">Backend</p>
 
                   <span class="dot"></span>
 
                   <time datetime="2022-02-23">Fab 23, 2022</time>
                 </div>
+
+                <p class="blog-tag-pill">Kubernetes</p>
 
                 <h3 class="h3 blog-item-title">Best fonts every designer</h3>
 
@@ -990,7 +920,7 @@
             </a>
           </li>
 
-          <li class="blog-post-item">
+          <li class="blog-post-item" *ngIf="isBlogCategoryVisible('database')">
             <a href="#">
 
               <figure class="blog-banner-box">
@@ -1000,12 +930,14 @@
               <div class="blog-content">
 
                 <div class="blog-meta">
-                  <p class="blog-category">Design</p>
+                  <p class="blog-category">Database</p>
 
                   <span class="dot"></span>
 
                   <time datetime="2022-02-23">Fab 23, 2022</time>
                 </div>
+
+                <p class="blog-tag-pill">Kubernetes</p>
 
                 <h3 class="h3 blog-item-title">Design digest #80</h3>
 
@@ -1018,7 +950,7 @@
             </a>
           </li>
 
-          <li class="blog-post-item">
+          <li class="blog-post-item" *ngIf="isBlogCategoryVisible('cloud')">
             <a href="#">
 
               <figure class="blog-banner-box">
@@ -1028,12 +960,14 @@
               <div class="blog-content">
 
                 <div class="blog-meta">
-                  <p class="blog-category">Design</p>
+                  <p class="blog-category">Cloud</p>
 
                   <span class="dot"></span>
 
                   <time datetime="2022-02-23">Fab 23, 2022</time>
                 </div>
+
+                <p class="blog-tag-pill">Kubernetes</p>
 
                 <h3 class="h3 blog-item-title">UI interactions of the week</h3>
 
@@ -1046,7 +980,7 @@
             </a>
           </li>
 
-          <li class="blog-post-item">
+          <li class="blog-post-item" *ngIf="isBlogCategoryVisible('devops')">
             <a href="#">
 
               <figure class="blog-banner-box">
@@ -1056,12 +990,14 @@
               <div class="blog-content">
 
                 <div class="blog-meta">
-                  <p class="blog-category">Design</p>
+                  <p class="blog-category">DevOps</p>
 
                   <span class="dot"></span>
 
                   <time datetime="2022-02-23">Fab 23, 2022</time>
                 </div>
+
+                <p class="blog-tag-pill">Kubernetes</p>
 
                 <h3 class="h3 blog-item-title">The forgotten art of spacing</h3>
 
@@ -1074,7 +1010,7 @@
             </a>
           </li>
 
-          <li class="blog-post-item">
+          <li class="blog-post-item" *ngIf="isBlogCategoryVisible('backend')">
             <a href="#">
 
               <figure class="blog-banner-box">
@@ -1084,12 +1020,14 @@
               <div class="blog-content">
 
                 <div class="blog-meta">
-                  <p class="blog-category">Design</p>
+                  <p class="blog-category">Backend</p>
 
                   <span class="dot"></span>
 
                   <time datetime="2022-02-23">Fab 23, 2022</time>
                 </div>
+
+                <p class="blog-tag-pill">Kubernetes</p>
 
                 <h3 class="h3 blog-item-title">Design digest #79</h3>
 
@@ -1116,41 +1054,114 @@
       - #CONTACT
     -->
 
-    <article class="contact" data-page="contact">
+    <article class="contact" [class.active]="activePage === 'contact'" data-page="contact">
 
       <header>
         <h2 class="h2 article-title">Contact</h2>
       </header>
 
-      <section class="mapbox" data-mapbox>
-        <figure>
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d199666.5651251294!2d-121.58334177520186!3d38.56165006739519!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x809ac672b28397f9%3A0x921f6aaa74197fdb!2sSacramento%2C%20CA%2C%20USA!5e0!3m2!1sen!2sbd!4v1647608789441!5m2!1sen!2sbd"
-            width="400" height="300" loading="lazy"></iframe>
-        </figure>
+      <section class="contact-hero">
+        <h3 class="h3 contact-hero-title">
+          <span class="contact-hero-accent">Let's Connect</span>
+          <span>&amp; Collaborate</span>
+        </h3>
+        <p class="contact-hero-text">
+          Open to full-time opportunities and technical collaboration on backend, cloud, and system design work.
+        </p>
       </section>
 
-      <section class="contact-form">
+      <section class="contact-grid" aria-label="Contact channels and availability">
+        <div class="contact-column">
+          <div class="contact-panel contact-panel-featured">
+            <h4 class="h4 contact-panel-title">Reach Out Directly</h4>
+            <p class="contact-panel-subtitle">I typically respond within 24 hours.</p>
 
-        <h3 class="h3 form-title">Contact Form</h3>
+            <div class="direct-contact-card" aria-label="Primary email contact">
+              <div class="direct-contact-head">
+                <div class="direct-contact-icon">
+                  <ion-icon name="mail-outline"></ion-icon>
+                </div>
+                <div>
+                  <p class="direct-contact-title">Email <span class="contact-badge">Primary</span></p>
+                  <p class="direct-contact-hint">For opportunities, collaboration, and technical discussion</p>
+                </div>
+              </div>
 
-        <form action="#" class="form" data-form>
+              <a class="direct-contact-email" href="mailto:alauddintuhin1411@gmail.com">alauddintuhin1411@gmail.com</a>
 
-          <div class="input-wrapper">
-            <input type="text" name="fullname" class="form-input" placeholder="Full name" required data-form-input>
+              <a class="direct-contact-btn" href="mailto:alauddintuhin1411@gmail.com">
+                <ion-icon name="mail-unread-outline"></ion-icon>
+                <span>Send Email</span>
+              </a>
+            </div>
 
-            <input type="email" name="email" class="form-input" placeholder="Email address" required data-form-input>
+            <div class="location-contact-card" aria-label="Location details">
+              <div class="location-contact-icon">
+                <ion-icon name="location-outline"></ion-icon>
+              </div>
+              <div>
+                <p class="location-contact-title">Location</p>
+                <p class="location-contact-text">Dhaka, Bangladesh</p>
+                <p class="location-contact-sub">Timezone: GMT+6</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-column">
+          <div class="contact-panel">
+            <h4 class="h4 contact-panel-title">Connect on Social</h4>
+            <p class="contact-panel-subtitle">Follow my work and connect on your preferred platform.</p>
+
+            <div class="social-contact-grid" role="list" aria-label="Social platforms">
+              <a class="social-contact-item" role="listitem" href="https://www.linkedin.com/in/altu/" target="_blank"
+                rel="noopener noreferrer" aria-label="LinkedIn">
+                <ion-icon name="logo-linkedin"></ion-icon>
+                <div>
+                  <p class="social-contact-name">LinkedIn</p>
+                  <p class="social-contact-note">Professional network</p>
+                </div>
+              </a>
+
+              <a class="social-contact-item" role="listitem" href="https://github.com/tuhinal" target="_blank"
+                rel="noopener noreferrer" aria-label="GitHub">
+                <ion-icon name="logo-github"></ion-icon>
+                <div>
+                  <p class="social-contact-name">GitHub</p>
+                  <p class="social-contact-note">Code &amp; projects</p>
+                </div>
+              </a>
+
+              <a class="social-contact-item" role="listitem" href="https://x.com" target="_blank"
+                rel="noopener noreferrer" aria-label="X">
+                <ion-icon name="logo-twitter"></ion-icon>
+                <div>
+                  <p class="social-contact-name">X (Twitter)</p>
+                  <p class="social-contact-note">Tech insights</p>
+                </div>
+              </a>
+
+              <a class="social-contact-item" role="listitem" href="https://leetcode.com/u/tuhinAl/" target="_blank"
+                rel="noopener noreferrer" aria-label="LeetCode">
+                <img src="./assets/images/leetcode.png" alt="LeetCode" class="contact-leetcode-icon">
+                <div>
+                  <p class="social-contact-name">LeetCode</p>
+                  <p class="social-contact-note">Problem solving profile</p>
+                </div>
+              </a>
+            </div>
           </div>
 
-          <textarea name="message" class="form-input" placeholder="Your Message" required data-form-input></textarea>
-
-          <button class="form-btn" type="submit" disabled data-form-btn>
-            <ion-icon name="paper-plane"></ion-icon>
-            <span>Send Message</span>
-          </button>
-
-        </form>
-
+          <div class="contact-panel availability-panel" aria-label="Current availability">
+            <h4 class="h4 contact-panel-title">Current Availability</h4>
+            <ul class="availability-list">
+              <li><span class="availability-dot available"></span><span>Full-Time Roles</span></li>
+              <li><span class="availability-dot partial"></span><span>System Design and Backend Consulting</span></li>
+              <li><span class="availability-dot limited"></span><span>Open to Remote/Relocation and available to
+                  start within 60 days</span></li>
+            </ul>
+          </div>
+        </div>
       </section>
 
     </article>
@@ -1158,3 +1169,51 @@
   </div>
 
 </main>
+
+<footer class="site-footer">
+  <div class="footer-top">
+    <p class="footer-brand">Tuhin Md Alauddin</p>
+
+    <nav class="footer-nav" aria-label="Footer navigation">
+      <button class="footer-link" [class.active]="activePage === 'home'" (click)="showPage('home')">Home</button>
+      <button class="footer-link" [class.active]="activePage === 'about'" (click)="showPage('about')">About</button>
+      <button class="footer-link" [class.active]="activePage === 'portfolio'"
+        (click)="showPage('portfolio')">Projects</button>
+      <button class="footer-link" [class.active]="activePage === 'blog'" (click)="showPage('blog')">Blog</button>
+      <button class="footer-link" [class.active]="activePage === 'contact'"
+        (click)="showPage('contact')">Contact</button>
+    </nav>
+
+    <ul class="footer-social">
+      <li>
+        <a href="https://www.linkedin.com/in/altu/" target="_blank" rel="noopener noreferrer" class="footer-social-link"
+          aria-label="LinkedIn">
+          <ion-icon name="logo-linkedin"></ion-icon>
+        </a>
+      </li>
+      <li>
+        <a href="https://github.com/tuhinal" target="_blank" rel="noopener noreferrer" class="footer-social-link"
+          aria-label="GitHub">
+          <ion-icon name="logo-github"></ion-icon>
+        </a>
+      </li>
+      <li>
+        <a href="mailto:alauddintuhin1411@gmail.com" class="footer-social-link" aria-label="Email">
+          <ion-icon name="mail-outline"></ion-icon>
+        </a>
+      </li>
+      <li>
+        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="footer-social-link"
+          aria-label="Twitter">
+          <ion-icon name="logo-twitter"></ion-icon>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="footer-divider"></div>
+
+  <p class="footer-bottom">
+    &copy; {{ currentYear }} Tuhin Md Alauddin. All Rights Reserved.
+  </p>
+</footer>

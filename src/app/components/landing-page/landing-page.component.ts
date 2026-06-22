@@ -7,20 +7,33 @@ import { Component } from '@angular/core';
 })
 export class LandingPageComponent {
   title = 'Welcome to the Coaching Center Management System';
+  currentYear = new Date().getFullYear();
+  activePage: 'home' | 'about' | 'portfolio' | 'blog' | 'contact' = 'home';
+  activePortfolioFilter: 'all' | 'system design' | 'cloud' | 'devops' | 'backend engineering' = 'all';
+  activeBlogFilter: 'all' | 'system design' | 'backend' | 'database' | 'cloud' | 'devops' = 'all';
+
   toggleSidebar() {
     const sidebar = document.querySelector('[data-sidebar]');
     sidebar?.classList.toggle('active');
   }
 
-  // Add this function if it doesn't already exist
-  loadPage(page: string): void {
-    const articles = document.querySelectorAll('article[data-page]');
-    articles.forEach(article => {
-      if (article.getAttribute('data-page') === page) {
-        article.classList.add('active');
-      } else {
-        article.classList.remove('active');
-      }
-    });
+  showPage(page: 'home' | 'about' | 'portfolio' | 'blog' | 'contact'): void {
+    this.activePage = page;
+  }
+
+  setPortfolioFilter(filter: 'all' | 'system design' | 'cloud' | 'devops' | 'backend engineering'): void {
+    this.activePortfolioFilter = filter;
+  }
+
+  isPortfolioCategoryVisible(category: 'system design' | 'cloud' | 'devops' | 'backend engineering'): boolean {
+    return this.activePortfolioFilter === 'all' || this.activePortfolioFilter === category;
+  }
+
+  setBlogFilter(filter: 'all' | 'system design' | 'backend' | 'database' | 'cloud' | 'devops'): void {
+    this.activeBlogFilter = filter;
+  }
+
+  isBlogCategoryVisible(category: 'system design' | 'backend' | 'database' | 'cloud' | 'devops'): boolean {
+    return this.activeBlogFilter === 'all' || this.activeBlogFilter === category;
   }
 }
