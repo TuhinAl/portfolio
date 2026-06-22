@@ -36,38 +36,8 @@ export class LandingPageComponent {
   selectedProject: ProjectItem | null = null;
 
   projects: ProjectItem[] = [
-    {
-      id: 1,
-      title: 'Finance',
-      images: ['project-1.jpg'],
-      category: 'backend engineering',
-      description: 'A finance workflow platform focused on secure transactions, auditability, and high-throughput API operations for enterprise users.',
-      modulesWorked: ['Authentication and authorization', 'Transaction processing API', 'Audit log and reporting'],
-      techStack: {
-        backend: ['Java', 'Spring Boot', 'REST API'],
-        frontend: ['Angular', 'TypeScript'],
-        database: ['PostgreSQL'],
-        infra: ['Docker', 'Nginx']
-      },
-      toolsUsed: ['Maven', 'GitLab CI', 'Postman'],
-      role: 'Backend Software Engineer'
-    },
-    {
-      id: 2,
-      title: 'Orizon',
-      images: ['project-2.png'],
-      category: 'backend engineering',
-      description: 'A service-oriented application where I contributed to resilient APIs and integration flows for cross-service communication.',
-      modulesWorked: ['Core business APIs', 'Service integration layer', 'Error handling and retries'],
-      techStack: {
-        backend: ['Java', 'Spring Boot', 'Kafka'],
-        frontend: ['Angular'],
-        database: ['MySQL'],
-        infra: ['Docker', 'Kubernetes']
-      },
-      toolsUsed: ['Jenkins', 'Grafana', 'Prometheus'],
-      role: 'Backend Software Engineer'
-    },
+
+
     {
       id: 3,
       title: 'Fundo',
@@ -133,22 +103,6 @@ export class LandingPageComponent {
       role: 'Backend Software Engineer'
     },
     {
-      id: 7,
-      title: 'Summary',
-      images: ['project-7.png'],
-      category: 'backend engineering',
-      description: 'A backend-driven product implementation focused on API quality, performance, and maintainable code structure.',
-      modulesWorked: ['REST endpoint design', 'Validation layer', 'Role-based access control'],
-      techStack: {
-        backend: ['Java', 'Spring Security'],
-        frontend: ['Angular'],
-        database: ['PostgreSQL'],
-        infra: ['Nginx', 'Linux']
-      },
-      toolsUsed: ['Postman', 'Maven', 'GitHub Actions'],
-      role: 'Backend Software Engineer'
-    },
-    {
       id: 8,
       title: 'Task Manager',
       images: ['project-8.jpg'],
@@ -163,22 +117,6 @@ export class LandingPageComponent {
       },
       toolsUsed: ['Prometheus', 'Grafana', 'Linux'],
       role: 'DevOps and Backend Engineer'
-    },
-    {
-      id: 9,
-      title: 'Arrival',
-      images: ['project-9.png'],
-      category: 'backend engineering',
-      description: 'A backend service implementation with focus on clean architecture, API reliability, and long-term maintainability.',
-      modulesWorked: ['Domain service implementation', 'API gateway integration', 'Logging and observability'],
-      techStack: {
-        backend: ['Java', 'Spring Boot'],
-        frontend: ['Angular'],
-        database: ['PostgreSQL'],
-        infra: ['AWS EC2', 'Docker']
-      },
-      toolsUsed: ['Jenkins', 'GitLab CI', 'Postman'],
-      role: 'Backend Software Engineer'
     },
     {
       id: 10,
@@ -198,7 +136,7 @@ export class LandingPageComponent {
     },
     {
       id: 11,
-      title: 'SwostiMFI (Microfinance Software for Local NGO)',
+      title: 'SwostiMFI',
       images: ['projects/mfi.png', 'projects/mfi-features.png'],
       category: 'backend engineering',
       description: 'SwostiMFI is a digital microfinance platform used by local NGOs in Bangladesh to manage loan disbursement, EMI-based weekly and monthly collections, and community savings operations for rural members.',
@@ -214,7 +152,7 @@ export class LandingPageComponent {
     },
     {
       id: 12,
-      title: 'Border Guard Hospital HMIS',
+      title: 'BGB Hospital HMIS Application',
       images: ['projects/somch.png'],
       category: 'backend engineering',
       description: 'A hospital management platform for Border Guard Bangladesh (BGB) to manage patient workflows, prescriptions, pharmacy, OPD, and IPD across five hospitals, including border and central paramilitary facilities.',
@@ -246,7 +184,7 @@ export class LandingPageComponent {
     },
     {
       id: 14,
-      title: 'Pocketalk Ventana Console (Sourcenext Japan)',
+      title: 'Pocketalk Ventana Console',
       images: ['projects/pocketalk.png'],
       category: 'backend engineering',
       description: 'Pocketalk Ventana Console is an operational platform used to manage translation devices through location tracking, device settings, usage history, and data import/export workflows for education and travel use cases in Japan.',
