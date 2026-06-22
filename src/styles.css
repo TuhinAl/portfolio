@@ -1088,6 +1088,78 @@ main {
 }
 
 
+/**
+ * training and certification
+ */
+
+.training-section {
+  margin-bottom: 30px;
+}
+
+.training-title {
+  margin-bottom: 20px;
+  text-transform: none;
+}
+
+.training-board {
+  padding: 22px;
+}
+
+.training-list {
+  display: grid;
+  gap: 12px;
+}
+
+.training-item {
+  display: grid;
+  grid-template-columns: 34px 1fr;
+  gap: 12px;
+  align-items: start;
+  padding: 12px;
+  border: 1px solid var(--jet);
+  border-radius: 12px;
+  background: var(--eerie-black-1);
+}
+
+.training-provider-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  object-fit: contain;
+}
+
+.training-item-content {
+  min-width: 0;
+}
+
+.training-item-title {
+  font-size: var(--fs-6);
+  line-height: 1.4;
+  margin-bottom: 4px;
+  text-transform: none;
+}
+
+.training-provider {
+  color: var(--light-gray-70);
+  font-size: var(--fs-8);
+  line-height: 1.4;
+  margin-bottom: 8px;
+}
+
+.training-link {
+  color: var(--vegas-gold);
+  font-size: var(--fs-7);
+  font-weight: var(--fw-500);
+  line-height: 1.4;
+  width: max-content;
+}
+
+.training-link:hover,
+.training-link:focus {
+  color: var(--orange-yellow-crayola);
+}
+
+
 
 
 
@@ -2030,6 +2102,10 @@ main {
   }
 
   .skills-board {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .training-list {
     grid-template-columns: 1fr 1fr;
   }
 
