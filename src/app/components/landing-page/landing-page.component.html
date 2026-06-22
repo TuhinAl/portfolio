@@ -722,7 +722,7 @@
 
         <ul class="project-list">
 
-          <li class="project-item" *ngFor="let project of projects"
+          <li class="project-item" *ngFor="let project of sortedProjects"
             [class.active]="isPortfolioCategoryVisible(project.category)" data-filter-item
             [attr.data-category]="project.category">
             <a href="#" class="project-item-link" (click)="openProjectModal(project, $event)">

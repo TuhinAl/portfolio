@@ -39,7 +39,7 @@ export class LandingPageComponent {
 
 
     {
-      id: 3,
+      id: 6,
       title: 'Fundo',
       images: ['project-3.jpg'],
       category: 'system design',
@@ -55,7 +55,7 @@ export class LandingPageComponent {
       role: 'Software Engineer'
     },
     {
-      id: 4,
+      id: 7,
       title: 'Brawlhalla',
       images: ['project-4.png'],
       category: 'cloud',
@@ -71,7 +71,7 @@ export class LandingPageComponent {
       role: 'Cloud and Backend Engineer'
     },
     {
-      id: 5,
+      id: 8,
       title: 'DSM.',
       images: ['project-5.png'],
       category: 'system design',
@@ -87,7 +87,7 @@ export class LandingPageComponent {
       role: 'Software Engineer'
     },
     {
-      id: 6,
+      id: 9,
       title: 'MetaSpark',
       images: ['project-6.png'],
       category: 'system design',
@@ -103,7 +103,7 @@ export class LandingPageComponent {
       role: 'Backend Software Engineer'
     },
     {
-      id: 8,
+      id: 10,
       title: 'Task Manager',
       images: ['project-8.jpg'],
       category: 'devops',
@@ -119,7 +119,7 @@ export class LandingPageComponent {
       role: 'DevOps and Backend Engineer'
     },
     {
-      id: 10,
+      id: 5,
       title: 'Muslim El',
       images: ['projects/muslim-el.png'],
       category: 'backend engineering',
@@ -135,7 +135,7 @@ export class LandingPageComponent {
       role: 'Backend Software Engineer'
     },
     {
-      id: 11,
+      id: 4,
       title: 'SwostiMFI',
       images: ['projects/mfi.png', 'projects/mfi-features.png'],
       category: 'backend engineering',
@@ -151,9 +151,9 @@ export class LandingPageComponent {
       role: 'Backend Software Engineer'
     },
     {
-      id: 12,
+      id: 1,
       title: 'BGB Hospital HMIS Application',
-      images: ['projects/somch.png'],
+      images: ['projects/bgb.png'],
       category: 'backend engineering',
       description: 'A hospital management platform for Border Guard Bangladesh (BGB) to manage patient workflows, prescriptions, pharmacy, OPD, and IPD across five hospitals, including border and central paramilitary facilities.',
       modulesWorked: ['Patient management', 'Prescription and pharmacy flow', 'OPD and IPD services', 'Doctor workflow support'],
@@ -167,7 +167,7 @@ export class LandingPageComponent {
       role: 'Backend Software Engineer'
     },
     {
-      id: 13,
+      id: 2,
       title: 'MAG Osmani Hospital HMIS Application',
       images: ['projects/somch.png'],
       category: 'backend engineering',
@@ -183,7 +183,7 @@ export class LandingPageComponent {
       role: 'Backend Software Engineer'
     },
     {
-      id: 14,
+      id: 3,
       title: 'Pocketalk Ventana Console',
       images: ['projects/pocketalk.png'],
       category: 'backend engineering',
@@ -199,6 +199,10 @@ export class LandingPageComponent {
       role: 'Backend Software Engineer'
     }
   ];
+
+  get sortedProjects(): ProjectItem[] {
+    return [...this.projects].sort((a, b) => a.id - b.id);
+  }
 
   getProjectPrimaryImage(project: ProjectItem): string {
     return project.images[0] || 'project-1.jpg';
