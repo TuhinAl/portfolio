@@ -2,6 +2,8 @@ import { Component, HostListener } from '@angular/core';
 
 type PortfolioCategory = 'system design' | 'cloud' | 'devops' | 'backend engineering';
 type PortfolioFilter = 'all' | PortfolioCategory;
+type BlogCategory = 'system design' | 'backend' | 'database' | 'cloud' | 'devops';
+type BlogFilter = 'all' | BlogCategory;
 
 interface ProjectTechStack {
   backend: string[];
@@ -23,6 +25,19 @@ interface ProjectItem {
   role: string;
 }
 
+interface BlogPost {
+  id: number;
+  category: BlogCategory;
+  categoryLabel: string;
+  image: string;
+  alt: string;
+  datetime: string;
+  displayDate: string;
+  tag: string[];
+  title: string;
+  description: string;
+}
+
 @Component({
   selector: 'app-landing-page',
   templateUrl: './landing-page.component.html',
@@ -33,7 +48,7 @@ export class LandingPageComponent {
   currentYear = new Date().getFullYear();
   activePage: 'home' | 'about' | 'portfolio' | 'blog' | 'contact' = 'home';
   activePortfolioFilter: PortfolioFilter = 'all';
-  activeBlogFilter: 'all' | 'system design' | 'backend' | 'database' | 'cloud' | 'devops' = 'all';
+  activeBlogFilter: BlogFilter = 'all';
   selectedProject: ProjectItem | null = null;
   activeProjectImage: string | null = null;
 
@@ -209,8 +224,87 @@ export class LandingPageComponent {
     
   ];
 
+  blogPosts: BlogPost[] = [
+    {
+      id: 1,
+      category: 'system design',
+      categoryLabel: 'System Design',
+      image: 'blog-1.jpg',
+      alt: 'Design conferences in 2022',
+      datetime: '2022-02-23',
+      displayDate: 'Fab 23, 2022',
+      tag: ['Kubernetes'],
+      title: 'Design conferences in 2022',
+      description: 'Veritatis et quasi architecto beatae vitae dicta sunt, explicabo.'
+    },
+    {
+      id: 2,
+      category: 'backend',
+      categoryLabel: 'Backend',
+      image: 'blog-2.jpg',
+      alt: 'Best fonts every designer',
+      datetime: '2022-02-23',
+      displayDate: 'Fab 23, 2022',
+      tag: ['Kubernetes'],
+      title: 'Best fonts every designer',
+      description: 'Sed ut perspiciatis, nam libero tempore, cum soluta nobis est eligendi.'
+    },
+    {
+      id: 3,
+      category: 'database',
+      categoryLabel: 'Database',
+      image: 'blog-3.jpg',
+      alt: 'Design digest #80',
+      datetime: '2022-02-23',
+      displayDate: 'Fab 23, 2022',
+      tag: ['Kubernetes'],
+      title: 'Design digest #80',
+      description: 'Excepteur sint occaecat cupidatat no proident, quis nostrum exercitationem ullam corporis suscipit.'
+    },
+    {
+      id: 4,
+      category: 'cloud',
+      categoryLabel: 'Cloud',
+      image: 'blog-4.jpg',
+      alt: 'UI interactions of the week',
+      datetime: '2022-02-23',
+      displayDate: 'Fab 23, 2022',
+      tag: ['Kubernetes'],
+      title: 'UI interactions of the week',
+      description: 'Enim ad minim veniam, consectetur adipiscing elit, quis nostrud exercitation ullamco laboris nisi.'
+    },
+    {
+      id: 5,
+      category: 'devops',
+      categoryLabel: 'DevOps',
+      image: 'blog-5.jpg',
+      alt: 'The forgotten art of spacing',
+      datetime: '2022-02-23',
+      displayDate: 'Fab 23, 2022',
+      tag: ['Kubernetes'],
+      title: 'The forgotten art of spacing',
+      description: 'Maxime placeat, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+    },
+    {
+      id: 6,
+      category: 'backend',
+      categoryLabel: 'Backend',
+      image: 'blog-6.jpg',
+      alt: 'Design digest #79',
+      datetime: '2022-02-23',
+      displayDate: 'Fab 23, 2022',
+      tag: ['Kubernetes'],
+      title: 'Design digest #79',
+      description: 'Optio cumque nihil impedit uo minus quod maxime placeat, velit esse cillum.'
+    }
+  ];
+
   get sortedProjects(): ProjectItem[] {
     return [...this.projects].sort((a, b) => a.id - b.id);
+  }
+
+  get filteredBlogPosts(): BlogPost[] {
+    return this.blogPosts.filter((post) => this.isBlogCategoryVisible(post.category));
   }
 
   getProjectPrimaryImage(project: ProjectItem): string {
@@ -218,6 +312,10 @@ export class LandingPageComponent {
   }
 
   getProjectImagePath(imageName: string): string {
+    return `./assets/images/${imageName}`;
+  }
+
+  getBlogImagePath(imageName: string): string {
     return `./assets/images/${imageName}`;
   }
 
@@ -263,11 +361,11 @@ export class LandingPageComponent {
     }
   }
 
-  setBlogFilter(filter: 'all' | 'system design' | 'backend' | 'database' | 'cloud' | 'devops'): void {
+  setBlogFilter(filter: BlogFilter): void {
     this.activeBlogFilter = filter;
   }
 
-  isBlogCategoryVisible(category: 'system design' | 'backend' | 'database' | 'cloud' | 'devops'): boolean {
+  isBlogCategoryVisible(category: BlogCategory): boolean {
     return this.activeBlogFilter === 'all' || this.activeBlogFilter === category;
   }
 }
