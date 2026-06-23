@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 
 type PortfolioCategory = 'system design' | 'cloud' | 'devops' | 'backend engineering';
 type PortfolioFilter = 'all' | PortfolioCategory;
@@ -7,7 +7,8 @@ interface ProjectTechStack {
   backend: string[];
   frontend: string[];
   database: string[];
-  infra: string[];
+  infra?: string[];
+  architecture?: string[];
 }
 
 interface ProjectItem {
@@ -34,10 +35,94 @@ export class LandingPageComponent {
   activePortfolioFilter: PortfolioFilter = 'all';
   activeBlogFilter: 'all' | 'system design' | 'backend' | 'database' | 'cloud' | 'devops' = 'all';
   selectedProject: ProjectItem | null = null;
+  activeProjectImage: string | null = null;
 
   projects: ProjectItem[] = [
-
-
+{
+      id: 1,
+      title: 'BGB Hospital HMIS Application',
+      images: ['projects/bgb.png'],
+      category: 'backend engineering',
+      description: 'A fully paperless Hospital Management System (HMS) actively deployed across five Border Guard Bangladesh (BGB) hospitals. This platform digitizes end-to-end healthcare operations—including OPD, IPD, pharmacy, and patient management—streamlining medical care across all five locations.',
+      modulesWorked: ['Implemented REST APIs', 'Integrated REST API with Frontend', 'PDF generation using JasperReports', 'Functional testing and bug fixing', 'Unit test, Integration test and happy path testing'],
+      techStack: {
+        backend: ['Java', 'Spring Boot', 'REST API', 'JasperReports'],
+        frontend: ['Angular', 'Typescript'],
+        database: ['PostgreSQL', 'SQL'],
+        infra: ['Docker', 'Kubernetes', 'Jenkins', 'Bare Metal Server'],
+        architecture: ['Monolithic']
+      },
+      toolsUsed: ['pgAdmin', 'postman', 'git', 'Jasper Studio'],
+      role: 'Full Stack Software Engineer'
+    },
+    {
+      id: 2,
+      title: 'MAG Osmani Hospital HMIS Application',
+      images: ['projects/somch.png'],
+      category: 'backend engineering',
+      description: 'Developed a comprehensive HMIS solution integrated with the national NID gateway for digital patient registration, including OPD, IPD, prescription, and pharmacy modules. The solution is in pilot rollout at MAG Osmani Medical College Hospital, Sylhet with expansion planned for government hospitals nationwide.',
+      modulesWorked: ['Implemented REST APIs', 'Integrated REST API with Frontend', 'Database Entity design', 'PDF generation using JasperReports', 'Functional testing and bug fixing', 'Unit test, Integration test and happy path testing'],
+      techStack: {
+        backend: ['Java', 'Spring Boot', 'REST API', 'JasperReports'],
+        frontend: ['Angular', 'Typescript'],
+        database: ['PostgreSQL', 'QueryDSL'],
+        infra: ['Docker', 'Kubernetes', 'Jenkins', 'Bare Metal Server'],
+        architecture: ['Microservices- total 12 services']
+      },
+      toolsUsed: ['pgAdmin', 'postman', 'git', 'Jasper Studio'],
+      role: 'Backend Software Engineer'
+    },
+    {
+      id: 3,
+      title: 'Pocketalk Ventana Console',
+      images: ['projects/pocketalk.png'],
+      category: 'backend engineering',
+      description: 'Pocketalk Ventana Console is an operational platform used to manage translation devices through location tracking, device settings, usage history, and data import/export workflows for education and travel use cases in Japan.',
+      modulesWorked: ['Device management API', 'Settings and policy management', 'Usage history and reporting', 'Data import/export service'],
+      techStack: {
+        backend: ['Java', 'Spring Boot'],
+        frontend: ['Angular'],
+        database: ['MySQL'],
+        infra: ['Docker', 'Kubernetes', 'Jenkins', 'GCP'],
+        architecture: ['Monolithic']
+      },
+      toolsUsed: ['Java', 'Spring Boot', 'REST API'],
+      role: 'Backend Software Engineer'
+    },
+ {
+      id: 4,
+      title: 'SwostiMFI',
+      images: ['projects/mfi.png', 'projects/mfi-features.png'],
+      category: 'backend engineering',
+      description: 'SwostiMFI is a digital microfinance platform used by local NGOs in Bangladesh to manage loan disbursement, EMI-based weekly and monthly collections, and community savings operations for rural members.',
+      modulesWorked: ['Loan management', 'Savings and group collection', 'Repayment scheduling and tracking', 'Digital reporting'],
+      techStack: {
+        backend: ['Java', 'Spring Boot'],
+        frontend: ['Vue.js'],
+        database: ['PostgreSQL'],
+        infra: ['AWS'],
+        architecture: ['Monolithic']
+      },
+      toolsUsed: ['Java', 'Spring Boot', 'REST API'],
+      role: 'Backend Software Engineer'
+    },
+    {
+      id: 5,
+      title: 'Muslim El',
+      images: ['projects/muslim-el.png'],
+      category: 'backend engineering',
+      description: 'Muslim El is a community communication platform for Muslims in Finland, originally developed by the Dhaka-based company Sweet iTech.',
+      modulesWorked: ['Admin panel'],
+      techStack: {
+        backend: ['Java', 'Spring Boot', 'REST API'],
+        frontend: ['Angular'],
+        database: ['MySQL'],
+        infra: ['Docker'],
+        architecture: ['Monolithic']
+      },
+      toolsUsed: ['Java', 'Spring Boot', 'REST API'],
+      role: 'Backend Software Engineer'
+    },
     {
       id: 6,
       title: 'Fundo',
@@ -49,7 +134,8 @@ export class LandingPageComponent {
         backend: ['Spring Boot', 'Microservices'],
         frontend: ['Angular'],
         database: ['PostgreSQL', 'Redis'],
-        infra: ['AWS EC2', 'Nginx']
+        infra: ['AWS EC2', 'Nginx'],
+        architecture: ['Microservices- total 12 services']
       },
       toolsUsed: ['Draw.io', 'JIRA', 'GitHub'],
       role: 'Software Engineer'
@@ -65,7 +151,8 @@ export class LandingPageComponent {
         backend: ['Spring Boot'],
         frontend: ['Angular'],
         database: ['RDS'],
-        infra: ['AWS VPC', 'AWS EC2', 'AWS IAM']
+        infra: ['AWS VPC', 'AWS EC2', 'AWS IAM'],
+        architecture: ['Cloud-Native']
       },
       toolsUsed: ['CloudFormation', 'Jenkins', 'Grafana'],
       role: 'Cloud and Backend Engineer'
@@ -81,7 +168,8 @@ export class LandingPageComponent {
         backend: ['Java', 'Spring Boot'],
         frontend: ['Angular'],
         database: ['PostgreSQL'],
-        infra: ['Docker', 'Linux']
+        infra: ['Docker', 'Linux'],
+        architecture: ['Monolithic']
       },
       toolsUsed: ['JIRA', 'GitLab', 'SonarQube'],
       role: 'Software Engineer'
@@ -118,86 +206,7 @@ export class LandingPageComponent {
       toolsUsed: ['Prometheus', 'Grafana', 'Linux'],
       role: 'DevOps and Backend Engineer'
     },
-    {
-      id: 5,
-      title: 'Muslim El',
-      images: ['projects/muslim-el.png'],
-      category: 'backend engineering',
-      description: 'Muslim El is a community communication platform for Muslims in Finland, originally developed by the Dhaka-based company Sweet iTech.',
-      modulesWorked: ['Admin panel'],
-      techStack: {
-        backend: ['Java', 'Spring Boot', 'REST API'],
-        frontend: ['Angular'],
-        database: ['MySQL'],
-        infra: ['Docker']
-      },
-      toolsUsed: ['Java', 'Spring Boot', 'REST API'],
-      role: 'Backend Software Engineer'
-    },
-    {
-      id: 4,
-      title: 'SwostiMFI',
-      images: ['projects/mfi.png', 'projects/mfi-features.png'],
-      category: 'backend engineering',
-      description: 'SwostiMFI is a digital microfinance platform used by local NGOs in Bangladesh to manage loan disbursement, EMI-based weekly and monthly collections, and community savings operations for rural members.',
-      modulesWorked: ['Loan management', 'Savings and group collection', 'Repayment scheduling and tracking', 'Digital reporting'],
-      techStack: {
-        backend: ['Java', 'Spring Boot'],
-        frontend: ['Vue.js'],
-        database: ['PostgreSQL'],
-        infra: ['AWS']
-      },
-      toolsUsed: ['Java', 'Spring Boot', 'REST API'],
-      role: 'Backend Software Engineer'
-    },
-    {
-      id: 1,
-      title: 'BGB Hospital HMIS Application',
-      images: ['projects/bgb.png'],
-      category: 'backend engineering',
-      description: 'A hospital management platform for Border Guard Bangladesh (BGB) to manage patient workflows, prescriptions, pharmacy, OPD, and IPD across five hospitals, including border and central paramilitary facilities.',
-      modulesWorked: ['Patient management', 'Prescription and pharmacy flow', 'OPD and IPD services', 'Doctor workflow support'],
-      techStack: {
-        backend: ['Java', 'Spring Boot'],
-        frontend: ['Angular'],
-        database: ['PostgreSQL'],
-        infra: ['Docker', 'Kubernetes', 'Jenkins']
-      },
-      toolsUsed: ['Java', 'Spring Boot', 'REST API', 'Angular'],
-      role: 'Backend Software Engineer'
-    },
-    {
-      id: 2,
-      title: 'MAG Osmani Hospital HMIS Application',
-      images: ['projects/somch.png'],
-      category: 'backend engineering',
-      description: 'Developed a comprehensive HMIS solution integrated with the national NID gateway for digital patient registration, including OPD, IPD, prescription, and pharmacy modules. The solution is in pilot rollout at MAG Osmani Medical College Hospital with expansion planned for government hospitals nationwide.',
-      modulesWorked: ['NID gateway integration', 'Patient registration and identity flow', 'OPD and IPD modules', 'Prescription and pharmacy modules'],
-      techStack: {
-        backend: ['Java', 'Spring Boot'],
-        frontend: ['Angular'],
-        database: ['PostgreSQL'],
-        infra: ['Docker', 'Kubernetes', 'Jenkins']
-      },
-      toolsUsed: ['Java', 'Spring Boot', 'REST API', 'Angular'],
-      role: 'Backend Software Engineer'
-    },
-    {
-      id: 3,
-      title: 'Pocketalk Ventana Console',
-      images: ['projects/pocketalk.png'],
-      category: 'backend engineering',
-      description: 'Pocketalk Ventana Console is an operational platform used to manage translation devices through location tracking, device settings, usage history, and data import/export workflows for education and travel use cases in Japan.',
-      modulesWorked: ['Device management API', 'Settings and policy management', 'Usage history and reporting', 'Data import/export service'],
-      techStack: {
-        backend: ['Java', 'Spring Boot'],
-        frontend: ['Angular'],
-        database: ['MySQL'],
-        infra: ['Docker', 'Kubernetes', 'Jenkins', 'GCP']
-      },
-      toolsUsed: ['Java', 'Spring Boot', 'REST API'],
-      role: 'Backend Software Engineer'
-    }
+    
   ];
 
   get sortedProjects(): ProjectItem[] {
@@ -229,13 +238,29 @@ export class LandingPageComponent {
     return this.activePortfolioFilter === 'all' || this.activePortfolioFilter === category;
   }
 
-  openProjectModal(project: ProjectItem, event?: Event): void {
-    event?.preventDefault();
+  openProjectModal(project: ProjectItem): void {
     this.selectedProject = project;
+    this.activeProjectImage = this.getProjectPrimaryImage(project);
   }
 
   closeProjectModal(): void {
     this.selectedProject = null;
+    this.activeProjectImage = null;
+  }
+
+  setActiveProjectImage(imageName: string): void {
+    this.activeProjectImage = imageName;
+  }
+
+  getActiveProjectImage(project: ProjectItem): string {
+    return this.activeProjectImage || this.getProjectPrimaryImage(project);
+  }
+
+  @HostListener('document:keydown.escape')
+  onEscapePress(): void {
+    if (this.selectedProject) {
+      this.closeProjectModal();
+    }
   }
 
   setBlogFilter(filter: 'all' | 'system design' | 'backend' | 'database' | 'cloud' | 'devops'): void {

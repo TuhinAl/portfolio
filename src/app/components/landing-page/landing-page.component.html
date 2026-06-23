@@ -725,21 +725,21 @@
           <li class="project-item" *ngFor="let project of sortedProjects"
             [class.active]="isPortfolioCategoryVisible(project.category)" data-filter-item
             [attr.data-category]="project.category">
-            <a href="#" class="project-item-link" (click)="openProjectModal(project, $event)">
+            <article class="project-card">
 
               <figure class="project-img">
-                <div class="project-item-icon-box">
-                  <ion-icon name="eye-outline"></ion-icon>
-                </div>
-
                 <img [src]="getProjectImagePath(getProjectPrimaryImage(project))" [alt]="project.title" loading="lazy">
               </figure>
 
-              <h3 class="project-title">{{ project.title }}</h3>
+              <div class="project-card-content">
+                <h3 class="project-title">{{ project.title }}</h3>
 
-              <p class="project-category">{{ project.category | titlecase }}</p>
+                <p class="project-category">{{ project.category | titlecase }}</p>
 
-            </a>
+                <button type="button" class="project-view-btn" (click)="openProjectModal(project)">View Details</button>
+              </div>
+
+            </article>
           </li>
 
         </ul>
@@ -754,54 +754,69 @@
             <ion-icon name="close-outline"></ion-icon>
           </button>
 
-          <figure class="project-modal-image-box">
-            <img [src]="getProjectImagePath(getProjectPrimaryImage(project))" [alt]="project.title">
-          </figure>
+          <div class="project-modal-layout">
+            <div class="project-modal-media">
+              <figure class="project-modal-image-box">
+                <img [src]="getProjectImagePath(getActiveProjectImage(project))" [alt]="project.title">
+              </figure>
 
-          <div class="project-modal-gallery" *ngIf="project.images.length > 1">
-            <img class="project-modal-gallery-img" *ngFor="let image of project.images"
-              [src]="getProjectImagePath(image)" [alt]="project.title + ' preview'" loading="lazy">
-          </div>
+              <div class="project-modal-gallery" *ngIf="project.images.length > 1">
+                <button class="project-modal-gallery-btn" type="button" *ngFor="let image of project.images"
+                  [class.active]="image === getActiveProjectImage(project)" (click)="setActiveProjectImage(image)">
+                  <img class="project-modal-gallery-img" [src]="getProjectImagePath(image)"
+                    [alt]="project.title + ' preview'" loading="lazy">
+                </button>
+              </div>
 
-          <div class="project-modal-content">
-            <h3 class="h3 project-modal-title">{{ project.title }}</h3>
-            <p class="project-modal-role">{{ project.role }} | {{ project.category | titlecase }}</p>
-            <p class="project-modal-description">{{ project.description }}</p>
+              <div class="project-modal-section">
+                <h4 class="h4 project-modal-section-title">Tools and Technologies Used</h4>
+                <ul class="project-modal-chip-list">
+                  <li class="project-modal-chip" *ngFor="let tool of project.toolsUsed">{{ tool }}</li>
+                </ul>
+              </div>
 
-            <div class="project-modal-section">
-              <h4 class="h4 project-modal-section-title">Modules I Worked On</h4>
-              <ul class="project-modal-chip-list">
-                <li class="project-modal-chip" *ngFor="let module of project.modulesWorked">{{ module }}</li>
-              </ul>
-            </div>
-
-            <div class="project-modal-section">
-              <h4 class="h4 project-modal-section-title">Tech Stack</h4>
-              <div class="project-modal-tech-grid">
-                <div class="project-modal-tech-card" *ngIf="project.techStack.backend.length > 0">
-                  <p class="project-modal-tech-title">Backend</p>
-                  <p class="project-modal-tech-value">{{ project.techStack.backend.join(', ') }}</p>
-                </div>
-                <div class="project-modal-tech-card" *ngIf="project.techStack.frontend.length > 0">
-                  <p class="project-modal-tech-title">Frontend</p>
-                  <p class="project-modal-tech-value">{{ project.techStack.frontend.join(', ') }}</p>
-                </div>
-                <div class="project-modal-tech-card" *ngIf="project.techStack.database.length > 0">
-                  <p class="project-modal-tech-title">Database</p>
-                  <p class="project-modal-tech-value">{{ project.techStack.database.join(', ') }}</p>
-                </div>
-                <div class="project-modal-tech-card" *ngIf="project.techStack.infra.length > 0">
-                  <p class="project-modal-tech-title">Infra</p>
-                  <p class="project-modal-tech-value">{{ project.techStack.infra.join(', ') }}</p>
-                </div>
+              <div class="project-modal-section" *ngIf="project.techStack.architecture?.length">
+                <h4 class="h4 project-modal-section-title">Architecture</h4>
+                <ul class="project-modal-chip-list">
+                  <li class="project-modal-chip" *ngFor="let item of project.techStack.architecture">{{ item }}</li>
+                </ul>
               </div>
             </div>
 
-            <div class="project-modal-section">
-              <h4 class="h4 project-modal-section-title">Tools and Technologies Used</h4>
-              <ul class="project-modal-chip-list">
-                <li class="project-modal-chip" *ngFor="let tool of project.toolsUsed">{{ tool }}</li>
-              </ul>
+            <div class="project-modal-content">
+              <h3 class="h3 project-modal-title">{{ project.title }}</h3>
+              <p class="project-modal-role">{{ project.role }} | {{ project.category | titlecase }}</p>
+              <p class="project-modal-description">{{ project.description }}</p>
+
+              <div class="project-modal-section project-contribution-block">
+                <h4 class="h4 project-modal-section-title">My Contribution and Role:</h4>
+                <ul class="project-contribution-list">
+                  <li class="project-contribution-item" *ngFor="let contribution of project.modulesWorked">{{ contribution }}</li>
+                </ul>
+              </div>
+
+              <div class="project-modal-section">
+                <h4 class="h4 project-modal-section-title">Tech Stack</h4>
+                <div class="project-modal-tech-grid">
+                  <div class="project-modal-tech-card" *ngIf="project.techStack.backend.length > 0">
+                    <p class="project-modal-tech-title">Backend</p>
+                    <p class="project-modal-tech-value">{{ project.techStack.backend.join(', ') }}</p>
+                  </div>
+                  <div class="project-modal-tech-card" *ngIf="project.techStack.frontend.length > 0">
+                    <p class="project-modal-tech-title">Frontend</p>
+                    <p class="project-modal-tech-value">{{ project.techStack.frontend.join(', ') }}</p>
+                  </div>
+                  <div class="project-modal-tech-card" *ngIf="project.techStack.database.length > 0">
+                    <p class="project-modal-tech-title">Database</p>
+                    <p class="project-modal-tech-value">{{ project.techStack.database.join(', ') }}</p>
+                  </div>
+                  <div class="project-modal-tech-card" *ngIf="project.techStack.infra.length > 0">
+                    <p class="project-modal-tech-title">Infra</p>
+                    <p class="project-modal-tech-value">{{ project.techStack.infra.join(', ') }}</p>
+                  </div>
+                </div>
+              </div>
+
             </div>
           </div>
         </div>
