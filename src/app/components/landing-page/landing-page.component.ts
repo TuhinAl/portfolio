@@ -1,4 +1,5 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
+import { environment } from '../../../environemnts/environment';
 
 type PortfolioCategory = 'system design' | 'cloud' | 'devops' | 'backend engineering';
 type PortfolioFilter = 'all' | PortfolioCategory;
@@ -43,7 +44,8 @@ interface BlogPost {
   templateUrl: './landing-page.component.html',
   styleUrls: ['./landing-page.component.css']
 })
-export class LandingPageComponent {
+export class LandingPageComponent implements OnInit, OnDestroy {
+  private apiKey: string = environment.weatherAppKey;
   title = 'Welcome to the Coaching Center Management System';
   currentYear = new Date().getFullYear();
   activePage: 'home' | 'about' | 'portfolio' | 'blog' | 'contact' = 'home';
@@ -51,6 +53,16 @@ export class LandingPageComponent {
   activeBlogFilter: BlogFilter = 'all';
   selectedProject: ProjectItem | null = null;
   activeProjectImage: string | null = null;
+  bangladeshTime = '--:--:-- --';
+  bangladeshDate = '';
+  weatherTemperatureC: number | null = null;
+  weatherFeelsLikeC: number | null = null;
+  weatherCondition = 'Loading weather...';
+  weatherIconName = 'partly-sunny-outline';
+  seasonName = 'Summer';
+  weatherError: string | null = null;
+  private bangladeshClockIntervalId: ReturnType<typeof setInterval> | null = null;
+  private weatherRefreshIntervalId: ReturnType<typeof setInterval> | null = null;
 
   projects: ProjectItem[] = [
 {
@@ -319,6 +331,27 @@ export class LandingPageComponent {
     return `./assets/images/${imageName}`;
   }
 
+  ngOnInit(): void {
+    this.updateBangladeshDateTime();
+    this.bangladeshClockIntervalId = setInterval(() => this.updateBangladeshDateTime(), 1000);
+
+    this.seasonName = this.getSeasonName(new Date());
+    void this.fetchDhakaWeather();
+    this.weatherRefreshIntervalId = setInterval(() => {
+      void this.fetchDhakaWeather();
+    }, 10 * 60 * 1000);
+  }
+
+  ngOnDestroy(): void {
+    if (this.bangladeshClockIntervalId) {
+      clearInterval(this.bangladeshClockIntervalId);
+    }
+
+    if (this.weatherRefreshIntervalId) {
+      clearInterval(this.weatherRefreshIntervalId);
+    }
+  }
+
   toggleSidebar() {
     const sidebar = document.querySelector('[data-sidebar]');
     sidebar?.classList.toggle('active');
@@ -367,5 +400,147 @@ export class LandingPageComponent {
 
   isBlogCategoryVisible(category: BlogCategory): boolean {
     return this.activeBlogFilter === 'all' || this.activeBlogFilter === category;
+  }
+
+  private updateBangladeshDateTime(): void {
+    const now = new Date();
+    const timeFormatter = new Intl.DateTimeFormat('en-US', {
+      timeZone: 'Asia/Dhaka',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: true
+    });
+    const dateFormatter = new Intl.DateTimeFormat('en-GB', {
+      timeZone: 'Asia/Dhaka',
+      weekday: 'short',
+      day: '2-digit',
+      month: 'long',
+      year: 'numeric'
+    });
+
+    this.bangladeshTime = timeFormatter.format(now);
+    this.bangladeshDate = dateFormatter.format(now);
+    this.seasonName = this.getSeasonName(now);
+  }
+
+  private async fetchDhakaWeather(): Promise<void> {
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=Dhaka,bd&appid=${this.apiKey}`;
+
+    try {
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error(`Weather request failed with status ${response.status}`);
+      }
+
+      const data = await response.json() as {
+        weather?: Array<{
+          main?: string;
+          description?: string;
+          icon?: string;
+        }>;
+        main?: {
+          temp?: number;
+          feels_like?: number;
+        };
+      };
+
+      const temperature = data.main?.temp;
+      const feelsLike = data.main?.feels_like;
+      const weatherMain = data.weather?.[0]?.main;
+      const weatherDescription = data.weather?.[0]?.description;
+      const weatherIconCode = data.weather?.[0]?.icon;
+
+      if (typeof temperature === 'number') {
+        this.weatherTemperatureC = this.toCelsiusFromKelvin(temperature);
+      }
+
+      if (typeof feelsLike === 'number') {
+        this.weatherFeelsLikeC = this.toCelsiusFromKelvin(feelsLike);
+      }
+
+      if (weatherMain || weatherDescription || weatherIconCode) {
+        const weatherInfo = this.mapOpenWeatherCondition(weatherMain, weatherDescription, weatherIconCode);
+        this.weatherCondition = weatherInfo.label;
+        this.weatherIconName = weatherInfo.icon;
+      }
+
+      this.weatherError = null;
+    } catch (error) {
+      console.error('Failed to load Dhaka weather data.', error);
+      this.weatherTemperatureC = null;
+      this.weatherFeelsLikeC = null;
+      this.weatherError = 'Weather data is temporarily unavailable.';
+      this.weatherCondition = 'Unknown condition';
+      this.weatherIconName = 'cloudy-outline';
+    }
+  }
+
+  private toCelsiusFromKelvin(kelvin: number): number {
+    return kelvin - 273.15;
+  }
+
+  private mapOpenWeatherCondition(
+    weatherMain?: string,
+    weatherDescription?: string,
+    weatherIconCode?: string
+  ): { label: string; icon: string } {
+    const normalizedMain = (weatherMain || '').toLowerCase();
+    const normalizedDescription = (weatherDescription || '').toLowerCase();
+    const isDay = weatherIconCode?.endsWith('d') ?? true;
+
+    if (normalizedMain === 'thunderstorm') {
+      return { label: this.toDisplayLabel(weatherDescription || weatherMain || 'Thunderstorm'), icon: 'thunderstorm-outline' };
+    }
+
+    if (normalizedMain === 'drizzle' || normalizedMain === 'rain') {
+      return { label: this.toDisplayLabel(weatherDescription || weatherMain || 'Raining'), icon: 'rainy-outline' };
+    }
+
+    if (normalizedMain === 'snow') {
+      return { label: this.toDisplayLabel(weatherDescription || weatherMain || 'Snow'), icon: 'snow-outline' };
+    }
+
+    if (normalizedMain === 'mist' || normalizedMain === 'smoke' || normalizedMain === 'haze' || normalizedMain === 'fog') {
+      return { label: this.toDisplayLabel(weatherDescription || weatherMain || 'Foggy'), icon: 'cloudy-outline' };
+    }
+
+    if (normalizedMain === 'clear') {
+      return { label: this.toDisplayLabel(weatherDescription || weatherMain || 'Sunny'), icon: isDay ? 'sunny-outline' : 'moon-outline' };
+    }
+
+    if (normalizedMain === 'clouds' || normalizedDescription.includes('cloud')) {
+      return { label: this.toDisplayLabel(weatherDescription || weatherMain || 'Cloudy'), icon: isDay ? 'partly-sunny-outline' : 'cloudy-night-outline' };
+    }
+
+    return { label: this.toDisplayLabel(weatherDescription || weatherMain || 'Cloudy'), icon: 'cloudy-outline' };
+  }
+
+  private toDisplayLabel(text: string): string {
+    return text
+      .split(' ')
+      .filter(Boolean)
+      .map((part) => part.charAt(0).toUpperCase() + part.slice(1).toLowerCase())
+      .join(' ');
+  }
+
+  private getSeasonName(date: Date): string {
+    const monthInDhaka = Number(
+      new Intl.DateTimeFormat('en-US', { timeZone: 'Asia/Dhaka', month: 'numeric' }).format(date)
+    );
+
+    if (monthInDhaka >= 3 && monthInDhaka <= 5) {
+      return 'Summer';
+    }
+
+    if (monthInDhaka >= 6 && monthInDhaka <= 9) {
+      return 'Monsoon';
+    }
+
+    if (monthInDhaka >= 10 && monthInDhaka <= 11) {
+      return 'Autumn';
+    }
+
+    return 'Winter';
   }
 }

@@ -418,7 +418,7 @@
             <span>2012 — 2014</span>
 
             <p class="timeline-text">
-              Higher Secondary Certificate (HSC) with a focus on science disciplines.
+              Higher Secondary Certificate (HSC) with a major in Science.
             </p>
 
           </li>
@@ -430,7 +430,7 @@
             <span>2007 — 2012</span>
 
             <p class="timeline-text">
-              Secondary School Certificate (SSC) with a focus on science disciplines.
+              Secondary School Certificate (SSC) with a major in Science.
             </p>
 
           </li>
@@ -970,6 +970,45 @@
                 <p class="location-contact-sub">Timezone: GMT+6</p>
               </div>
             </div>
+
+            <div class="bd-live-card" aria-label="Bangladesh time and weather">
+              <div class="bd-live-head">
+                <div class="bd-live-icon">
+                  <ion-icon name="time-outline"></ion-icon>
+                </div>
+                <div>
+                  <p class="bd-live-title">Bangladesh Time now</p>
+                  <p class="bd-live-time">{{ bangladeshTime }}</p>
+                </div>
+              </div>
+
+              <p class="bd-live-date">{{ bangladeshDate }}</p>
+
+              <div class="bd-weather-row">
+                <div class="bd-weather-chip">
+                  <ion-icon [name]="weatherIconName"></ion-icon>
+                  <span>{{ weatherCondition }}</span>
+                </div>
+
+                <div class="bd-weather-chip" *ngIf="weatherTemperatureC !== null">
+                  <ion-icon name="thermometer-outline"></ion-icon>
+                  <span>Temp: {{ weatherTemperatureC | number:'1.0-1' }}&deg;C</span>
+                </div>
+
+                <!-- <div class="bd-weather-chip" *ngIf="weatherFeelsLikeC !== null">
+                  <ion-icon name="body-outline"></ion-icon>
+                  <span>Feels like: {{ weatherFeelsLikeC | number:'1.0-1' }}&deg;C</span>
+                </div> -->
+
+                <!-- <div class="bd-weather-chip">
+                  <ion-icon name="leaf-outline"></ion-icon>
+                  <span>{{ seasonName }}</span>
+                </div> -->
+
+              </div>
+
+              <p class="bd-weather-error" *ngIf="weatherError">{{ weatherError }}</p>
+            </div>
           </div>
         </div>
 
@@ -1021,9 +1060,9 @@
             <h4 class="h4 contact-panel-title">Current Availability</h4>
             <ul class="availability-list">
               <li><span class="availability-dot available"></span><span>Full-Time Roles</span></li>
-              <li><span class="availability-dot partial"></span><span>System Design and Backend Consulting</span></li>
+              <li><span class="availability-dot partial"></span><span>System Design, Cloud and Backend Development</span></li>
               <li><span class="availability-dot limited"></span><span>Open to Remote/Relocation and available to
-                  start within 60 days</span></li>
+                  start within 30 days</span></li>
             </ul>
           </div>
         </div>
